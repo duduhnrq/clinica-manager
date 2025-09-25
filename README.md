@@ -1,2 +1,31 @@
-# clinica-manager
-Sistema de gestão para clínica com cadastro de pacientes, agenda de consultas/cirurgias e histórico médico, desenvolvido com Spring Boot e Angular.
+# 🏥 Sistema de Gestão para Clínica  
+
+## 📌 Descrição  
+Este projeto tem como objetivo desenvolver um sistema de gestão para clínicas, permitindo um melhor controle de pacientes, consultas e cirurgias.  
+
+O sistema será desenvolvido em **Java (Spring Boot)** no back-end e **Angular** no front-end, utilizando um **banco de dados relacional** (PostgreSQL).  
+
+## 🚀 Funcionalidades  
+- **Cadastro de pacientes (CRUD):** criar, editar, excluir e visualizar informações de pacientes.  
+- **Agenda:** marcação e gerenciamento de consultas e cirurgias.  
+- **Histórico médico:** visualização e registro de anotações sobre consultas e cirurgias passadas.  
+
+## 🛠️ Tecnologias Utilizadas  
+- **Back-end:** Java, Spring Boot  
+- **Front-end:** Angular  
+- **Banco de Dados:** PostgreSQL  
+
+## 👥 Integrantes  
+- **Product Owner (PO):** Eduardo Henrique 
+- **Scrum Master:** Luiz Henrique
+- **Developers:**  
+  - Luiz Henrique e Pedro Vinicius (Back-end)  
+  - Eduardo Henrique e Paulo Marrocos (Front-end)  
+  - Cauã dos Santos e Pedro Marrocos (Banco de Dados)
+ 
+## 🏛️ Organização do Projeto
+Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público e transparente gerenciado no Trello. Você pode acompanhar nosso progresso e as próximas funcionalidades planejadas.
+
+### Nosso Backlog de Produto
+
+![Backlog do Produto no Trello]()

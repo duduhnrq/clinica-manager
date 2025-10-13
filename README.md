@@ -26,6 +26,10 @@ O sistema será desenvolvido em **Java (Spring Boot)** no back-end e **Angular**
 ## 🏛️ Organização do Projeto
 Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público e transparente gerenciado no Trello. Você pode acompanhar nosso progresso e as próximas funcionalidades planejadas.
 
-### Nosso Backlog de Produto
+### Backlog de Produto
 
-![Backlog do Produto no Trello]()
+<img width="1704" height="721" alt="image" src="https://github.com/user-attachments/assets/378757e2-bdac-4f57-b40d-6ef656cddac1" />
+
+### Diagrama de Atividades
+
+[🔗Clique aqui para acessar o Figma](https://www.figma.com/board/xXW8QH9S26e2d1dfQYRh1Q/Diagrama-de-Atividades---Cl%C3%ADnica?node-id=0-1&t=4xbbukZmo1FdPQl1-1)

@@ -1,4 +1,4 @@
-# 🏥 Sistema de Gestão para Clínica  
+<img width="1705" height="722" alt="image" src="https://github.com/user-attachments/assets/fc3de19c-eb35-4979-ba9f-627995b4ed6b" /># 🏥 Sistema de Gestão para Clínica  
 
 ## 📌 Descrição  
 Este projeto tem como objetivo desenvolver um sistema de gestão para clínicas, permitindo um melhor controle de pacientes, consultas e cirurgias.  
@@ -28,7 +28,7 @@ Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público 
 
 ### Backlog de Produto
 
-<img width="1704" height="721" alt="image" src="https://github.com/user-attachments/assets/378757e2-bdac-4f57-b40d-6ef656cddac1" />
+<img width="1705" height="722" alt="image" src="https://github.com/user-attachments/assets/bcca49c2-8301-4c7b-a0c4-c56d30465d65" />
 
 ### Diagrama de Atividades
 

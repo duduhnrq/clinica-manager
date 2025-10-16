@@ -1,4 +1,4 @@
-<img width="1705" height="722" alt="image" src="https://github.com/user-attachments/assets/fc3de19c-eb35-4979-ba9f-627995b4ed6b" /># 🏥 Sistema de Gestão para Clínica  
+# 🏥 Sistema de Gestão para Clínica  
 
 ## 📌 Descrição  
 Este projeto tem como objetivo desenvolver um sistema de gestão para clínicas, permitindo um melhor controle de pacientes, consultas e cirurgias.  

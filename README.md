@@ -1,3 +1,5 @@
+<img width="738" height="523" alt="Captura de tela 2025-10-22 201144" src="https://github.com/user-attachments/assets/3e110f7a-fde7-4051-a16b-adc6aafcf2d8" />
+
 # 🏥 Sistema de Gestão para Clínica  
 
 ## 📌 Descrição  
@@ -30,6 +32,10 @@ Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público 
 
 <img width="1705" height="722" alt="image" src="https://github.com/user-attachments/assets/bcca49c2-8301-4c7b-a0c4-c56d30465d65" />
 
+### Protótipo Navegável
+
+[🔗Clique aqui para acessar o Figma](https://www.figma.com/proto/12yqS8vQIJgI0nIe0FATaQ/Sistema-de-Gest%C3%A3o-para-Cl%C3%ADnica?node-id=1-1666&p=f&t=DWKaYbAODx7emgVK-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1666)
+
 ### Diagrama de Atividades
 
-[🔗Clique aqui para acessar o Figma](https://www.figma.com/board/xXW8QH9S26e2d1dfQYRh1Q/Diagrama-de-Atividades---Cl%C3%ADnica?node-id=0-1&t=4xbbukZmo1FdPQl1-1)
+[🔗Clique aqui para acessar o Figma](https://www.figma.com/board/cYlT4kZKIgR7OWQys0CaP6/Diagrama-de-Atividades---Cl%C3%ADnica?t=a1H3VszDg3qL8OBI-1)

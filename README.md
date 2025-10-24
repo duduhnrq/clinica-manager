@@ -22,8 +22,8 @@ O sistema será desenvolvido em **Java (Spring Boot)** no back-end e **Angular**
 - **Scrum Master:** Luiz Henrique
 - **Developers:**  
   - Luiz Henrique e Pedro Vinicius (Back-end)  
-  - Eduardo Henrique e Paulo Marrocos (Front-end)  
-  - Cauã dos Santos e Pedro Marrocos (Banco de Dados)
+  - Eduardo Henrique e Pedro Marrocos (Front-end)  
+  - Cauã dos Santos e Paulo Marrocos (Banco de Dados)
  
 ## 🏛️ Organização do Projeto
 Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público e transparente gerenciado no Trello. Você pode acompanhar nosso progresso e as próximas funcionalidades planejadas.

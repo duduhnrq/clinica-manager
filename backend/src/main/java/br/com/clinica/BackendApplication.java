@@ -1,4 +1,4 @@
-package br.com.clinica.backend;
+package br.com.clinica;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,7 @@
 package br.com.clinica.service;
 
 import br.com.clinica.dto.PacienteRequestDTO;
+import br.com.clinica.exception.RegraDeNegocioException; // <-- CORRIJA ESTA LINHA
 import br.com.clinica.model.Endereco;
 import br.com.clinica.model.Paciente;
 import br.com.clinica.repository.PacienteRepository;
@@ -33,13 +34,12 @@ public class PacienteService {
         // --- REGRA DE NEGÓCIO 1: Validar duplicados ---
         // Usamos os métodos que criamos no Repository
         if (pacienteRepository.findByCpf(dto.cpf()).isPresent()) {
-            // Se o CPF já existe, lançamos um erro.
-            // (Mais tarde, podemos criar uma exceção customizada)
-            throw new RuntimeException("CPF já cadastrado no sistema."); 
+            throw new RegraDeNegocioException("CPF já cadastrado no sistema."); // MUDOU
         }
+        
+        // 3. E MUDE AQUI
         if (pacienteRepository.findByEmail(dto.email()).isPresent()) {
-            // Se o Email já existe, lançamos um erro.
-            throw new RuntimeException("Email já cadastrado no sistema.");
+            throw new RegraDeNegocioException("Email já cadastrado no sistema."); // MUDOU
         }
 
         // --- LÓGICA DE MAPEAMENTO: Converter DTO para Entidade ---

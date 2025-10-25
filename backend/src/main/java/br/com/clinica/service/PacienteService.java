@@ -1,7 +1,7 @@
 package br.com.clinica.service;
 
 import br.com.clinica.dto.PacienteRequestDTO;
-import br.com.clinica.exception.RegraDeNegocioException; // <-- CORRIJA ESTA LINHA
+import br.com.clinica.exception.RegraDeNegocioException;
 import br.com.clinica.model.Endereco;
 import br.com.clinica.model.Paciente;
 import br.com.clinica.repository.PacienteRepository;

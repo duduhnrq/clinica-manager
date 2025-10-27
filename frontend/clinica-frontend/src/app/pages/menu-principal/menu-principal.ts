@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-menu-principal',
-  imports: [MatCardModule, MatIconModule],
+  imports: [RouterLink],
   templateUrl: './menu-principal.html',
   styleUrl: './menu-principal.css',
 })

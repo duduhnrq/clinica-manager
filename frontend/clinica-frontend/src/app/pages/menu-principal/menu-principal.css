@@ -12,16 +12,16 @@
 }
 
 .card:hover p {
-  color: #155dfc;
+  color: #2b7fff;
 }
 
 .card:hover button {
-  border: 1px solid #155dfc;
+  border: 1px solid #2b7fff;
 }
 
 .card mat-icon {
   color: #fff;
-  background-color: #155dfc;
+  background-color: #2b7fff;
   border-radius: 100%;
   padding: 1.2rem;
   margin: auto;

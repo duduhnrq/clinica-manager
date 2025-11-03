@@ -123,15 +123,27 @@
           </div>
         </div>
 
-        <div class="flex flex-col">
-          <label for="profissao" class="text-sm font-medium">Profissão *</label>
-          <input
-            type="text"
-            name="profissao"
-            id="profissao"
-            placeholder="Profissão do paciente"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          />
+        <div class="flex w-full gap-4">
+          <div class="flex flex-col w-full">
+            <label for="profissao" class="text-sm font-medium">Profissão *</label>
+            <input
+              type="text"
+              name="profissao"
+              id="profissao"
+              placeholder="Profissão do paciente"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div class="flex flex-col w-full">
+            <label for="telefone" class="text-sm font-medium">Telefone *</label>
+            <input
+              type="text"
+              name="telefone"
+              id="telefone"
+              placeholder="(00) 00000-0000"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
       </form>
     </div>
@@ -146,17 +158,27 @@
 
       <form action="" class="flex flex-col gap-4">
         <div class="w-full flex gap-4">
-          <div class="flex flex-col w-8/12">
-            <label for="endereco" class="text-sm font-medium">Endereço Completo *</label>
+          <div class="flex flex-col w-full">
+            <label for="rua" class="text-sm font-medium">Rua *</label>
             <input
               type="text"
-              name="endereco"
-              id="endereco"
-              placeholder="Rua, Número"
+              name="rua"
+              id="rua"
+              placeholder="Rua"
               class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div class="flex flex-col w-4/12">
+          <div class="flex flex-col w-sm">
+            <label for="numero" class="text-sm font-medium">Número *</label>
+            <input
+              type="text"
+              name="numero"
+              id="numero"
+              placeholder="Número"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div class="flex flex-col w-full">
             <label for="bairro" class="text-sm font-medium">Bairro *</label>
             <input
               type="text"
@@ -190,12 +212,12 @@
             />
           </div>
           <div class="flex flex-col w-full">
-            <label for="telefone" class="text-sm font-medium">Telefone *</label>
+            <label for="estado" class="text-sm font-medium">Estado *</label>
             <input
               type="text"
-              name="telefone"
-              id="telefone"
-              placeholder="(00) 00000-0000"
+              name="estado"
+              id="estado"
+              placeholder="Estado"
               class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -204,283 +226,27 @@
     </div>
   </div>
 
-  <!--Indicação e Convênio-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Indicação e Convênio</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="indicacao"
-            id="indicacao"
-            class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-          />
-          <label for="indicacao" class="text-sm font-medium m-0">Houve indicação</label>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="fonte-indicacao" class="text-sm font-medium">De quem ou de onde?</label>
-          <input
-            type="text"
-            name="fonte-indicacao"
-            id="fonte-indicacao"
-            placeholder="Fonte da indicação"
-            disabled
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-          />
-        </div>
-
-        <div class="flex flex-col">
-          <label for="convenio" class="text-sm font-medium">Convênio</label>
-          <input
-            type="text"
-            name="convenio"
-            id="convenio"
-            placeholder="Nome do convênio"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Dados Físicos-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Endereço</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="peso" class="text-sm font-medium">Peso (kg) *</label>
-            <input
-              type="text"
-              name="peso"
-              id="peso"
-              placeholder="Ex: 70.5"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="altura" class="text-sm font-medium">Altura (m) *</label>
-            <input
-              type="text"
-              name="altura"
-              id="altura"
-              placeholder="Ex: 1.75"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Histórico Médico-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Histórico Médico</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="possui-alergias"
-            id="possui-alergias"
-            class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-          />
-          <label for="possui-alergias" class="text-sm font-medium m-0">Possui alergias</label>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="alergias" class="text-sm font-medium">Alergias</label>
-          <textarea
-            name="alergias"
-            id="alergias"
-            placeholder="Descreva as alergias..."
-            disabled
-            rows="3"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-          ></textarea>
-        </div>
-
-        <div class="flex justify-between w-xl my-4">
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="cardiaco"
-                id="cardiaco"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="cardiaco" class="text-sm font-medium m-0">Doença cardíaca</label>
-            </div>
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="hipertensao"
-                id="hipertensao"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="hipertensao" class="text-sm font-medium m-0">Hipertensão</label>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="varizes"
-                id="varizes"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="varizes" class="text-sm font-medium m-0">Varizes</label>
-            </div>
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="asmatico"
-                id="asmatico"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="asmatico" class="text-sm font-medium m-0">Asmático</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex w-full gap-4">
-          <div class="flex flex-col gap-4 w-full">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="fumante"
-                id="fumante"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="fumante" class="text-sm font-medium m-0">Fumante</label>
-            </div>
-            <div class="flex flex-col">
-              <label for="cigarros-dia" class="text-sm font-medium"
-                >Quantos cigarros por dia?</label
-              >
-              <input
-                type="text"
-                name="cigarros-dia"
-                id="cigarros-dia"
-                placeholder="Ex: 5 cigarros"
-                disabled
-                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </div>
-          </div>
-          <div class="flex flex-col gap-4 w-full">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="ex-fumante"
-                id="ex-fumante"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="ex-fumante" class="text-sm font-medium m-0">Ex-Fumante</label>
-            </div>
-            <div class="flex flex-col">
-              <label for="tempo-parou-fumar" class="text-sm font-medium"
-                >Há quanto tempo parou de fumar?</label
-              >
-              <input
-                type="text"
-                name="tempo-parou-fumar"
-                id="tempo-parou-fumar"
-                placeholder="Ex: 2 anos"
-                disabled
-                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col my-4">
-          <label for="medicamentos" class="text-sm font-medium"
-            >Medicamentos que usa atualmente</label
-          >
-          <textarea
-            name="medicamentos"
-            id="medicamentos"
-            placeholder="Liste os medicamentos..."
-            rows="3"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-        </div>
-
-        <div class="flex flex-col gap-4">
-          <div class="flex flex-col">
-            <label for="cirurgias-anteriores" class="text-sm font-medium"
-              >Cirurgias anteriores</label
-            >
-            <textarea
-              name="cirurgias-anteriores"
-              id="cirurgias-anteriores"
-              placeholder="Liste as cirurgias..."
-              rows="3"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            ></textarea>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="possui-complicacoes"
-              id="possui-complicacoes"
-              class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-            />
-            <label for="possui-complicacoes" class="text-sm font-medium m-0"
-              >Complicações nas cirurgias anteriores</label
-            >
-          </div>
-
-          <div class="flex flex-col">
-            <label for="complicacoes" class="text-sm font-medium">Quais</label>
-            <textarea
-              id="complicacoes"
-              placeholder="Liste as complicações..."
-              rows="3"
-              disabled
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-            ></textarea>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="w-full flex justify-center">
-      <button
-        class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer flex items-center gap-1"
-        routerLink="/pacientes/nova-ficha"
+  <!--Salvar Ficha-->
+  <div class="w-full flex justify-center">
+    <button
+      class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer flex items-center gap-1"
+      routerLink="/pacientes/nova-ficha"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-4"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"
-          />
-        </svg>
-        Salvar Ficha
-      </button>
-    </div>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"
+        />
+      </svg>
+      Salvar Ficha
+    </button>
   </div>
 </div>

@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-pacientes',
   imports: [RouterLink],
   templateUrl: './pacientes.html',
-  styleUrl: './pacientes.css',
+  styleUrls: ['./pacientes.css'],
 })
 export class Pacientes {
 

@@ -99,4 +99,64 @@ public class PacienteService {
         return pacienteRepository.findByNomeCompletoContainingIgnoreCaseOrEmailContainingIgnoreCaseOrTelefoneContainingIgnoreCase(
                 termo, termo, termo);
     }
+    /**
+     * Atualiza um paciente existente.
+     * Se o paciente não for encontrado, lança RuntimeException.
+     * Se houver conflito de CPF ou Email (pertencentes a outro paciente), lança RegraDeNegocioException.
+     */
+    @Transactional
+    public Paciente atualizar(Long id, PacienteRequestDTO dto) {
+        // Busca o paciente existente
+        Paciente pacienteExistente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado para atualização."));
+
+        // --- Regras de negócio: Evitar duplicidade em CPF e Email ---
+        pacienteRepository.findByCpf(dto.cpf())
+                .filter(p -> !p.getId().equals(id))
+                .ifPresent(p -> {
+                    throw new RegraDeNegocioException("CPF já está cadastrado em outro paciente.");
+                });
+
+        pacienteRepository.findByEmail(dto.email())
+                .filter(p -> !p.getId().equals(id))
+                .ifPresent(p -> {
+                    throw new RegraDeNegocioException("Email já está cadastrado em outro paciente.");
+                });
+
+        // --- Atualiza os campos básicos ---
+        pacienteExistente.setNomeCompleto(dto.nomeCompleto());
+        pacienteExistente.setDataNascimento(dto.dataNascimento());
+        pacienteExistente.setNaturalidade(dto.naturalidade());
+        pacienteExistente.setCpf(dto.cpf());
+        pacienteExistente.setIdentidade(dto.identidade());
+        pacienteExistente.setEstadoCivil(dto.estadoCivil());
+        pacienteExistente.setEmail(dto.email());
+        pacienteExistente.setTelefone(dto.telefone());
+        pacienteExistente.setProfissao(dto.profissao());
+
+        // --- Atualiza endereço (mantendo o objeto embutido) ---
+        if (pacienteExistente.getEndereco() == null) {
+            pacienteExistente.setEndereco(new Endereco());
+        }
+        pacienteExistente.getEndereco().setEnderecoCompleto(dto.enderecoCompleto());
+        pacienteExistente.getEndereco().setBairro(dto.bairro());
+        pacienteExistente.getEndereco().setCep(dto.cep());
+        pacienteExistente.getEndereco().setCidade(dto.cidade());
+
+        // --- Salva novamente no banco ---
+        return pacienteRepository.save(pacienteExistente);
+    }
+
+    /**
+     * Remove um paciente pelo ID.
+     * Se não encontrar, lança RuntimeException.
+     */
+    @Transactional
+    public void remover(Long id) {
+        if (!pacienteRepository.existsById(id)) {
+            throw new RuntimeException("Paciente não encontrado para remoção.");
+        }
+        pacienteRepository.deleteById(id);
+    }
 }
+

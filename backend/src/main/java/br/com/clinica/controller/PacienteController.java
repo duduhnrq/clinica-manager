@@ -1,6 +1,7 @@
 package br.com.clinica.controller; // Ajuste o pacote
 
 import br.com.clinica.dto.PacienteRequestDTO;
+import br.com.clinica.exception.RegraDeNegocioException;
 import br.com.clinica.model.Paciente;
 import br.com.clinica.service.PacienteService;
 import jakarta.validation.Valid;
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,5 +105,38 @@ public class PacienteController {
                     // Se o Optional estiver vazio (não achou), retorna 404 Not Found
                     return ResponseEntity.notFound().build();
                 });
+    }
+
+    /**
+     * Endpoint para ATUALIZAR um paciente existente.
+     * @PathVariable pega o {id} e @RequestBody recebe os novos dados.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<Paciente> atualizar(
+            @PathVariable Long id,
+            @RequestBody @Valid PacienteRequestDTO dto) {
+        
+        try {
+            Paciente pacienteAtualizado = pacienteService.atualizar(id, dto);
+            return ResponseEntity.ok(pacienteAtualizado); // 200 OK com o novo paciente
+        } catch (RegraDeNegocioException e) {
+            return ResponseEntity.badRequest().build(); // 400 se regra de negócio falhar
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build(); // 404 se não encontrado
+        }
+    }
+
+    /**
+     * Endpoint para REMOVER um paciente pelo ID.
+     * @PathVariable pega o {id} da URL.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
+        try {
+            pacienteService.remover(id);
+            return ResponseEntity.noContent().build(); // 204 se removido com sucesso
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build(); // 404 se não encontrado
+        }
     }
 }

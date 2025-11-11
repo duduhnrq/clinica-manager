@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Paciente {
+  id?: number; 
   nomeCompleto: string;
   dataNascimento: string;
   estadoCivil: string;
@@ -29,7 +30,28 @@ export class PacienteService {
 
   constructor(private http: HttpClient) {}
 
+  /** ➕ Adicionar novo paciente */
   adicionar(paciente: Paciente): Observable<any> {
     return this.http.post(this.apiUrl, paciente);
+  }
+
+  /** 📋 Listar todos os pacientes */
+  listar(): Observable<Paciente[]> {
+    return this.http.get<Paciente[]>(this.apiUrl);
+  }
+
+  /** 🔍 Buscar paciente por ID */
+  buscarPorId(id: number): Observable<Paciente> {
+    return this.http.get<Paciente>(`${this.apiUrl}/${id}`);
+  }
+
+  /** ✏️ Atualizar paciente */
+  atualizar(id: number, paciente: Paciente): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, paciente);
+  }
+
+  /** 🗑️ Excluir paciente */
+  excluir(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

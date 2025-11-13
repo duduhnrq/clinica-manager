@@ -4,22 +4,23 @@ import jakarta.persistence.*; // Importa as anotações do JPA
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 // @Entity diz ao Spring: "Esta classe é uma tabela no banco de dados"
-@Entity 
+@Entity
 // @Table(name = "...") define o nome exato da tabela
 @Table(name = "pacientes")
-@Data 
+@Data
 public class Paciente {
 
     // @Id indica que este campo é a Chave Primária
-    @Id 
+    @Id
     // @GeneratedValue diz ao banco para gerar o valor (ex: auto-incremento)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // @Column permite configurar a coluna (ex: not null)
-    @Column(nullable = false) 
+    @Column(nullable = false)
     private String nomeCompleto;
 
     @Column(nullable = false)
@@ -46,7 +47,14 @@ public class Paciente {
     private String profissao; // Opcional (sem 'nullable = false')
 
     // @Embedded diz: "Traga todos os campos da classe Endereco para esta tabela"
-    @Embedded 
+    @Embedded
     private Endereco endereco;
 
+    @Column(name = "data_cadastro", updatable = false)
+    private LocalDateTime dataCadastro;
+
+    @PrePersist
+    public void prePersist() {
+        this.dataCadastro = LocalDateTime.now();
+    }
 }

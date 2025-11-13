@@ -101,30 +101,30 @@
           </svg>
           <h2>Informações Pessoais</h2>
         </div>
-        <span class="text-xs font-medium bg-blue-500 text-white rounded-xl px-2 py-0.5"
+        <!--<span class="text-xs font-medium bg-blue-500 text-white rounded-xl px-2 py-0.5"
           >Consultado</span
-        >
+        >-->
     </div>
     <div class="flex flex-col gap-6">
         <div class="flex flex-col gap-1">
             <p class="text-md font-medium">Nome:</p>
-            <span class="text-sm text-gray-500">Maria Silva</span>
+            <span class="text-sm text-gray-500">{{ paciente?.nomeCompleto }}</span>
         </div>
         <div class="flex flex-col gap-1">
-            <p class="text-md font-medium">Idade:</p>
-            <span class="text-sm text-gray-500">40 anos</span>
+            <p class="text-md font-medium">Data de Nascimento:</p>
+            <span class="text-sm text-gray-500">{{ paciente?.dataNascimento | date : 'dd/MM/yyyy' }}</span>
         </div>
         <div class="flex flex-col gap-1">
             <p class="text-md font-medium">Telefone:</p>
-            <span class="text-sm text-gray-500">(81) 98877-6655</span>
+            <span class="text-sm text-gray-500">{{ paciente?.telefone }}</span>
         </div>
         <div class="flex flex-col gap-1">
             <p class="text-md font-medium">E-mail:</p>
-            <span class="text-sm text-gray-500">maria.silva@email.com</span>
+            <span class="text-sm text-gray-500">{{ paciente?.email }}</span>
         </div>
         <div class="flex flex-col gap-1">
             <p class="text-md font-medium">Cadastro:</p>
-            <span class="text-sm text-gray-500">28 de outubro de 2025 às 7h36</span>
+            <span class="text-sm text-gray-500">{{ paciente?.dataCadastro | date:'dd/MM/yyyy HH:mm' }}</span>
         </div>
     </div>
   </div>

@@ -145,18 +145,19 @@
                     d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
                   />
                 </svg>
-                Cadastro: 28/10/2025</span
+                Cadastro: {{ paciente?.dataCadastro | date:'dd/MM/yyyy' }}</span
               >
             </div>
           </div>
         </div>
+        
         <div class="flex items-center gap-2">
-          <span class="text-xs font-medium bg-white border border-blue-500 text-blue-500 rounded-xl px-2 py-0.5"
+          <!--<span class="text-xs font-medium bg-white border border-blue-500 text-blue-500 rounded-xl px-2 py-0.5"
             >Aguardando Consulta</span
-          >
+          >-->
           <button
             class="flex items-center gap-3 bg-gray-100 rounded-md border border-gray-300 py-2 px-3 text-sm font-medium hover:bg-gray-200 transition-all duration-300 ease-in-out cursor-pointer"
-            routerLink="/pacientes/ver-detalhes"
+            [routerLink]="['/pacientes/ver-detalhes', paciente.id]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -180,6 +181,7 @@
             Ver Detalhes
           </button>
         </div>
+
       </div>
     </div>
   </div>

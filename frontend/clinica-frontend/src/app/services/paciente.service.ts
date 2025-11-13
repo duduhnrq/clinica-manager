@@ -20,6 +20,8 @@ export interface Paciente {
   cep: string;
   cidade: string;
   estado: string;
+
+  dataCadastro?: string;
 }
 
 @Injectable({

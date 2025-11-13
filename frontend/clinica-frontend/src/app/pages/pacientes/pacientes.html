@@ -71,6 +71,10 @@
       >
     </div>
 
+    <div *ngIf="pacientes?.length === 0">
+      <p class="text-gray-500 my-16">Nenhum paciente cadastrado.</p>
+    </div>
+
     <div class="w-full flex flex-col gap-4">
       <div
         *ngFor="let paciente of pacientesBusca"

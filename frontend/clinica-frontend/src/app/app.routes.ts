@@ -8,5 +8,5 @@ export const routes: Routes = [
   { path: '', component: MenuPrincipal },
   { path: 'pacientes', component: Pacientes },
   { path: 'pacientes/nova-ficha', component: NovaFicha },
-  { path: 'pacientes/ver-detalhes', component: VerDetalhes }
+  { path: 'pacientes/ver-detalhes/:id', component: VerDetalhes },
 ];

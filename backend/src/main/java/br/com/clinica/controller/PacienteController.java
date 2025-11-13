@@ -5,6 +5,7 @@ import br.com.clinica.model.Paciente;
 import br.com.clinica.service.PacienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 // @RestController combina @Controller e @ResponseBody
 // Diz ao Spring que esta classe define endpoints REST (que retornam JSON)
 @RestController 
@@ -73,7 +75,7 @@ public class PacienteController {
             @RequestParam(name = "termo", required = false) String termoPesquisa) {
         
         List<Paciente> pacientes;
-        if (termoPesquisa == null || termoPesquisa.isBlank()) {
+        if (termoPesquisa == null || termoPesquisa.trim().isEmpty()) {
             // Se o parâmetro "termo" NÃO foi enviado, lista todos.
             pacientes = pacienteService.listarTodos();
         } else {

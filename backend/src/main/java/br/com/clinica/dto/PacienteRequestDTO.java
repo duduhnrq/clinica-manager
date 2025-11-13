@@ -41,8 +41,11 @@ public record PacienteRequestDTO(
 
     // Campos do Endereço (vêm "achatados" do formulário)
     @NotBlank
-    String enderecoCompleto,
-    
+    String rua,
+
+    @NotBlank
+    String numero,
+
     @NotBlank
     String bairro,
     
@@ -50,5 +53,8 @@ public record PacienteRequestDTO(
     String cep,
     
     @NotBlank
-    String cidade
+    String cidade,
+
+    @NotBlank
+    String estado
 ) {}

@@ -2,468 +2,245 @@
   <!--Header-->
   <header class="w-full flex justify-between">
     <div class="flex flex-col gap-1 items-start">
-      <p class="m-0 font-medium text-xl transition-all duration-300 ease-in-out">
-        Nova Ficha de Paciente
-      </p>
+      <p class="m-0 font-medium text-xl">Nova Ficha de Paciente</p>
       <span class="text-sm text-gray-500">Criar uma nova ficha para o paciente</span>
     </div>
 
     <button
-      class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+      class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 cursor-pointer transition-all duration-300 ease-in-out"
       routerLink="/pacientes"
     >
       Voltar à Lista
     </button>
   </header>
 
-  <!--Dados Pessoais-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-          />
-        </svg>
-        <h2>Dados Pessoais</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="flex flex-col">
-          <label for="nome" class="text-sm font-medium">Nome Completo *</label>
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            placeholder="Nome completo do paciente"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="data-nascimento" class="text-sm font-medium">Data de Nascimento *</label>
-            <input
-              type="date"
-              name="data-nascimento"
-              id="data-nascimento"
-              placeholder="Data de nascimento do paciente"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="estado-civil" class="text-sm font-medium">Estado Civil *</label>
-            <select
-              name="estado-civil"
-              id="estado-civil"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="" disabled selected>Selecione</option>
-              <option value="solteiro">Solteiro(a)</option>
-              <option value="casado">Casado(a)</option>
-              <option value="divorciado">Divorciado(a)</option>
-              <option value="viuvo">Viúvo(a)</option>
-              <option value="uniao-estavel">União Estável</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="naturalidade" class="text-sm font-medium">Naturalidade *</label>
-            <input
-              type="text"
-              name="naturalidade"
-              id="naturalidade"
-              placeholder="Ex: Recife, PE"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="identidade" class="text-sm font-medium">Identidade *</label>
-            <input
-              type="text"
-              name="identidade"
-              id="identidade"
-              placeholder="Número da identidade do paciente"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="cpf" class="text-sm font-medium">CPF *</label>
-            <input
-              type="text"
-              name="cpf"
-              id="cpf"
-              placeholder="000.000.000-00"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="email" class="text-sm font-medium">E-mail *</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="E-mail do paciente"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="profissao" class="text-sm font-medium">Profissão *</label>
-          <input
-            type="text"
-            name="profissao"
-            id="profissao"
-            placeholder="Profissão do paciente"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Endereço-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Endereço</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-8/12">
-            <label for="endereco" class="text-sm font-medium">Endereço Completo *</label>
-            <input
-              type="text"
-              name="endereco"
-              id="endereco"
-              placeholder="Rua, Número"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-4/12">
-            <label for="bairro" class="text-sm font-medium">Bairro *</label>
-            <input
-              type="text"
-              name="bairro"
-              id="bairro"
-              placeholder="Bairro"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="cep" class="text-sm font-medium">CEP *</label>
-            <input
-              type="text"
-              name="cep"
-              id="cep"
-              placeholder="00000-000"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="cidade" class="text-sm font-medium">Cidade *</label>
-            <input
-              type="text"
-              name="cidade"
-              id="cidade"
-              placeholder="Cidade"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="telefone" class="text-sm font-medium">Telefone *</label>
-            <input
-              type="text"
-              name="telefone"
-              id="telefone"
-              placeholder="(00) 00000-0000"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Indicação e Convênio-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Indicação e Convênio</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="indicacao"
-            id="indicacao"
-            class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-          />
-          <label for="indicacao" class="text-sm font-medium m-0">Houve indicação</label>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="fonte-indicacao" class="text-sm font-medium">De quem ou de onde?</label>
-          <input
-            type="text"
-            name="fonte-indicacao"
-            id="fonte-indicacao"
-            placeholder="Fonte da indicação"
-            disabled
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-          />
-        </div>
-
-        <div class="flex flex-col">
-          <label for="convenio" class="text-sm font-medium">Convênio</label>
-          <input
-            type="text"
-            name="convenio"
-            id="convenio"
-            placeholder="Nome do convênio"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Dados Físicos-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Endereço</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="w-full flex gap-4">
-          <div class="flex flex-col w-full">
-            <label for="peso" class="text-sm font-medium">Peso (kg) *</label>
-            <input
-              type="text"
-              name="peso"
-              id="peso"
-              placeholder="Ex: 70.5"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div class="flex flex-col w-full">
-            <label for="altura" class="text-sm font-medium">Altura (m) *</label>
-            <input
-              type="text"
-              name="altura"
-              id="altura"
-              placeholder="Ex: 1.75"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--Histórico Médico-->
-  <div class="w-full flex flex-col gap-4">
-    <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
-      <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
-        <h2>Histórico Médico</h2>
-      </div>
-
-      <form action="" class="flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="possui-alergias"
-            id="possui-alergias"
-            class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-          />
-          <label for="possui-alergias" class="text-sm font-medium m-0">Possui alergias</label>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="alergias" class="text-sm font-medium">Alergias</label>
-          <textarea
-            name="alergias"
-            id="alergias"
-            placeholder="Descreva as alergias..."
-            disabled
-            rows="3"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-          ></textarea>
-        </div>
-
-        <div class="flex justify-between w-xl my-4">
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="cardiaco"
-                id="cardiaco"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="cardiaco" class="text-sm font-medium m-0">Doença cardíaca</label>
-            </div>
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="hipertensao"
-                id="hipertensao"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="hipertensao" class="text-sm font-medium m-0">Hipertensão</label>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="varizes"
-                id="varizes"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="varizes" class="text-sm font-medium m-0">Varizes</label>
-            </div>
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="asmatico"
-                id="asmatico"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="asmatico" class="text-sm font-medium m-0">Asmático</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex w-full gap-4">
-          <div class="flex flex-col gap-4 w-full">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="fumante"
-                id="fumante"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="fumante" class="text-sm font-medium m-0">Fumante</label>
-            </div>
-            <div class="flex flex-col">
-              <label for="cigarros-dia" class="text-sm font-medium"
-                >Quantos cigarros por dia?</label
-              >
-              <input
-                type="text"
-                name="cigarros-dia"
-                id="cigarros-dia"
-                placeholder="Ex: 5 cigarros"
-                disabled
-                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </div>
-          </div>
-          <div class="flex flex-col gap-4 w-full">
-            <div class="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name="ex-fumante"
-                id="ex-fumante"
-                class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
-              />
-              <label for="ex-fumante" class="text-sm font-medium m-0">Ex-Fumante</label>
-            </div>
-            <div class="flex flex-col">
-              <label for="tempo-parou-fumar" class="text-sm font-medium"
-                >Há quanto tempo parou de fumar?</label
-              >
-              <input
-                type="text"
-                name="tempo-parou-fumar"
-                id="tempo-parou-fumar"
-                placeholder="Ex: 2 anos"
-                disabled
-                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col my-4">
-          <label for="medicamentos" class="text-sm font-medium"
-            >Medicamentos que usa atualmente</label
-          >
-          <textarea
-            name="medicamentos"
-            id="medicamentos"
-            placeholder="Liste os medicamentos..."
-            rows="3"
-            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-          ></textarea>
+  <form
+    #form="ngForm"
+    (ngSubmit)="salvarFicha(form)"
+    class="flex flex-col gap-6 w-full m-auto"
+  >
+    <!--Dados Pessoais-->
+    <div class="w-full flex flex-col gap-4">
+      <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
+        <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
+          <h2>Dados Pessoais</h2>
         </div>
 
         <div class="flex flex-col gap-4">
           <div class="flex flex-col">
-            <label for="cirurgias-anteriores" class="text-sm font-medium"
-              >Cirurgias anteriores</label
-            >
-            <textarea
-              name="cirurgias-anteriores"
-              id="cirurgias-anteriores"
-              placeholder="Liste as cirurgias..."
-              rows="3"
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-            ></textarea>
-          </div>
-
-          <div class="flex items-center gap-2">
+            <label class="text-sm font-medium">Nome Completo *</label>
             <input
-              type="checkbox"
-              name="possui-complicacoes"
-              id="possui-complicacoes"
-              class="appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 cursor-pointer trasition-all duration-300 ease-in-out"
+              [(ngModel)]="paciente.nomeCompleto"
+              name="nomeCompleto"
+              required
+              type="text"
+              placeholder="Nome completo do paciente"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
             />
-            <label for="possui-complicacoes" class="text-sm font-medium m-0"
-              >Complicações nas cirurgias anteriores</label
-            >
           </div>
 
-          <div class="flex flex-col">
-            <label for="complicacoes" class="text-sm font-medium">Quais</label>
-            <textarea
-              id="complicacoes"
-              placeholder="Liste as complicações..."
-              rows="3"
-              disabled
-              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
-            ></textarea>
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Data de Nascimento *</label>
+              <input
+                [(ngModel)]="paciente.dataNascimento"
+                name="dataNascimento"
+                required
+                type="date"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Estado Civil *</label>
+              <select
+                [(ngModel)]="paciente.estadoCivil"
+                name="estadoCivil"
+                required
+                class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="" disabled selected>Selecione</option>
+                <option value="Solteiro">Solteiro(a)</option>
+                <option value="Casado">Casado(a)</option>
+                <option value="Divorciado">Divorciado(a)</option>
+                <option value="Viuvo">Viúvo(a)</option>
+                <option value="Uniao Estavel">União Estável</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Naturalidade *</label>
+              <input
+                [(ngModel)]="paciente.naturalidade"
+                name="naturalidade"
+                required
+                type="text"
+                placeholder="Ex: Recife, PE"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Identidade *</label>
+              <input
+                [(ngModel)]="paciente.identidade"
+                name="identidade"
+                required
+                type="text"
+                placeholder="Número da identidade"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">CPF *</label>
+              <input
+                [(ngModel)]="paciente.cpf"
+                name="cpf"
+                required
+                type="text"
+                placeholder="000.000.000-00"
+                maxlength="14"
+                (input)="onCpfInput($event)"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">E-mail *</label>
+              <input
+                [(ngModel)]="paciente.email"
+                name="email"
+                required
+                type="email"
+                placeholder="E-mail do paciente"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Profissão *</label>
+              <input
+                [(ngModel)]="paciente.profissao"
+                name="profissao"
+                required
+                type="text"
+                placeholder="Profissão"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Telefone *</label>
+              <input
+                [(ngModel)]="paciente.telefone"
+                name="telefone"
+                required
+                type="text"
+                placeholder="(00) 00000-0000"
+                maxlength="15"
+                (input)="onTelefoneInput($event)"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
 
+    <!--Endereço-->
+    <div class="w-full flex flex-col gap-4">
+      <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
+        <div class="flex items-center gap-1 text-blue-500 text-xl font-medium">
+          <h2>Endereço</h2>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Rua *</label>
+              <input
+                [(ngModel)]="paciente.rua"
+                name="rua"
+                required
+                type="text"
+                placeholder="Rua"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-sm">
+              <label class="text-sm font-medium">Número *</label>
+              <input
+                [(ngModel)]="paciente.numero"
+                name="numero"
+                required
+                type="text"
+                placeholder="Número"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Bairro *</label>
+              <input
+                [(ngModel)]="paciente.bairro"
+                name="bairro"
+                required
+                type="text"
+                placeholder="Bairro"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div class="w-full flex gap-4">
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">CEP *</label>
+              <input
+                [(ngModel)]="paciente.cep"
+                name="cep"
+                required
+                type="text"
+                placeholder="00000-000"
+                maxlength="9"
+                (input)="onCepInput($event)"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Cidade *</label>
+              <input
+                [(ngModel)]="paciente.cidade"
+                name="cidade"
+                required
+                type="text"
+                placeholder="Cidade"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Estado *</label>
+              <input
+                [(ngModel)]="paciente.estado"
+                name="estado"
+                required
+                type="text"
+                placeholder="Estado"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Salvar-->
     <div class="w-full flex justify-center">
       <button
-        class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer flex items-center gap-1"
-        routerLink="/pacientes/nova-ficha"
+        type="button"
+        (click)="salvarFicha(form)"
+        class="bg-blue-500 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 cursor-pointer transition-all duration-300 ease-in-out flex items-center gap-1"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -476,11 +253,203 @@
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"
+            d="M9 15l2.25 2.25L15 12m4.5-2.625v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625A1.125 1.125 0 0 0 4.5 4.5v15a1.125 1.125 0 0 0 1.125 1.125h12.75A1.125 1.125 0 0 0 19.5 19.5V11.25a9 9 0 0 0-9-9z"
           />
         </svg>
         Salvar Ficha
       </button>
+    </div>
+  </form>
+
+  <!-- Modal de Sucesso -->
+  <div
+    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+    *ngIf="modalSucessoAberto"
+  >
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm text-center">
+      <div class="w-full flex justify-end" (click)="fecharModalSucesso()">
+        <svg
+          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          />
+        </svg>
+      </div>
+      <svg
+        class="w-16 h-16 text-blue-500 m-auto mb-4"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+
+      <h2 class="m-0 text-xl font-medium mb-1">Paciente cadastrado com sucesso!</h2>
+      <p class="text-gray-600 mb-3">Os dados foram salvos corretamente.</p>
+    </div>
+  </div>
+
+  <!-- Modal de Erro -->
+  <div
+    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+    *ngIf="modalErroAberto"
+  >
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm text-center">
+      <div class="w-full flex justify-end" (click)="fecharModal()">
+        <svg
+          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          />
+        </svg>
+      </div>
+      <svg
+        class="w-16 h-16 text-blue-500 m-auto mb-4"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+
+      <h2 class="m-0 text-xl font-medium mb-1">Erro ao cadastrar paciente!</h2>
+      <p class="text-gray-600 mb-3">Os dados não foram salvos corretamente.</p>
+    </div>
+  </div>
+
+  <!-- Modal de Campos Obrigatórios -->
+  <div
+    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+    *ngIf="modalObrigatorioAberto"
+  >
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md text-center">
+      <div class="w-full flex justify-end" (click)="fecharModal()">
+        <svg
+          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          />
+        </svg>
+      </div>
+      <svg
+        class="w-16 h-16 text-blue-500 m-auto mb-4"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+
+      <h2 class="m-0 text-xl font-medium mb-1">Campos obrigatórios não preenchidos!</h2>
+      <p class="text-gray-600 mb-3">Por favor, preencha todos os campos obrigatórios.</p>
+    </div>
+  </div>
+
+  <!-- Modal de CPF já cadastrado -->
+  <div
+    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+    *ngIf="modalCpfAberto"
+  >
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md text-center">
+      <div class="w-full flex justify-end" (click)="fecharModal()">
+        <svg
+          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          />
+        </svg>
+      </div>
+      <svg
+        class="w-16 h-16 text-blue-500 m-auto mb-4"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+
+      <h2 class="m-0 text-xl font-medium mb-1">CPF já cadastrado!</h2>
+      <p class="text-gray-600 mb-3">Esse CPF já está cadastrado no sistema.</p>
     </div>
   </div>
 </div>

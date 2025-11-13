@@ -46,11 +46,13 @@ public class PacienteService {
         
         // 1. Criar e preencher o Endereco embutido
         Endereco endereco = new Endereco();
-        endereco.setEnderecoCompleto(dto.enderecoCompleto());
+        endereco.setRua(dto.rua());
+        endereco.setNumero(dto.numero());
         endereco.setBairro(dto.bairro());
         endereco.setCep(dto.cep());
         endereco.setCidade(dto.cidade());
-        
+        endereco.setEstado(dto.estado());
+
         // 2. Criar e preencher o Paciente
         Paciente paciente = new Paciente();
         paciente.setNomeCompleto(dto.nomeCompleto());

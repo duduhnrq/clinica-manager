@@ -33,9 +33,6 @@ public class Paciente {
     private String cpf;
 
     @Column(nullable = false)
-    private String identidade;
-
-    @Column(nullable = false)
     private String estadoCivil;
 
     @Column(nullable = false, unique = true) // Email também é obrigatório e único

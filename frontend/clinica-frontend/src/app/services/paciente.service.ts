@@ -3,12 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Paciente {
-  id?: number; 
+  id?: number;
   nomeCompleto: string;
   dataNascimento: string;
   estadoCivil: string;
   naturalidade: string;
-  identidade: string;
   cpf: string;
   email: string;
   profissao: string;
@@ -25,7 +24,7 @@ export interface Paciente {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PacienteService {
   private apiUrl = 'http://localhost:8080/api/pacientes';
@@ -54,6 +53,10 @@ export class PacienteService {
 
   /** 🗑️ Excluir paciente */
   excluir(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  remover(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

@@ -3,9 +3,9 @@
   <header class="w-full flex justify-between">
     <div class="flex flex-col gap-1 items-start">
       <p class="m-0 font-medium text-xl transition-all duration-300 ease-in-out">
-        Buscar Pacientes
+        Detalhes do Paciente
       </p>
-      <span class="text-sm text-gray-500">Buscar e editar dados de pacientes</span>
+      <span class="text-sm text-gray-500">Paciente: {{ paciente?.nomeCompleto }}</span>
     </div>
 
     <button
@@ -40,8 +40,8 @@
 
     <div class="flex items-center gap-2">
       <button
+        (click)="editarPaciente()"
         class="bg-white border border-gray-200 px-4 py-1 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer flex items-center gap-2"
-        routerLink="/pacientes"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +60,8 @@
         Editar
       </button>
       <button
+        (click)="removerPaciente()"
         class="bg-white border border-gray-200 px-4 py-1 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer flex items-center gap-2 text-red-500"
-        routerLink="/pacientes"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -122,9 +122,10 @@
             <p class="text-md font-medium">E-mail:</p>
             <span class="text-sm text-gray-500">{{ paciente?.email }}</span>
         </div>
+        <hr class="text-gray-300">
         <div class="flex flex-col gap-1">
             <p class="text-md font-medium">Cadastro:</p>
-            <span class="text-sm text-gray-500">{{ paciente?.dataCadastro | date:'dd/MM/yyyy HH:mm' }}</span>
+            <span class="text-sm text-gray-500">{{ paciente?.dataCadastro | date:'dd/MM/yyyy - HH:mm' }}</span>
         </div>
     </div>
   </div>

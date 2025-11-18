@@ -17,7 +17,6 @@ export class NovaFicha {
     dataNascimento: '',
     estadoCivil: '',
     naturalidade: '',
-    identidade: '',
     cpf: '',
     email: '',
     profissao: '',

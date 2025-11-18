@@ -59,7 +59,6 @@ public class PacienteService {
         paciente.setDataNascimento(dto.dataNascimento());
         paciente.setNaturalidade(dto.naturalidade());
         paciente.setCpf(dto.cpf());
-        paciente.setIdentidade(dto.identidade());
         paciente.setEstadoCivil(dto.estadoCivil());
         paciente.setEmail(dto.email());
         paciente.setTelefone(dto.telefone());
@@ -130,7 +129,6 @@ public class PacienteService {
         pacienteExistente.setDataNascimento(dto.dataNascimento());
         pacienteExistente.setNaturalidade(dto.naturalidade());
         pacienteExistente.setCpf(dto.cpf());
-        pacienteExistente.setIdentidade(dto.identidade());
         pacienteExistente.setEstadoCivil(dto.estadoCivil());
         pacienteExistente.setEmail(dto.email());
         pacienteExistente.setTelefone(dto.telefone());
@@ -140,10 +138,12 @@ public class PacienteService {
         if (pacienteExistente.getEndereco() == null) {
             pacienteExistente.setEndereco(new Endereco());
         }
-        pacienteExistente.getEndereco().setEnderecoCompleto(dto.enderecoCompleto());
+        pacienteExistente.getEndereco().setRua(dto.rua());
+        pacienteExistente.getEndereco().setNumero(dto.numero());
         pacienteExistente.getEndereco().setBairro(dto.bairro());
         pacienteExistente.getEndereco().setCep(dto.cep());
         pacienteExistente.getEndereco().setCidade(dto.cidade());
+        pacienteExistente.getEndereco().setEstado(dto.estado());
 
         // --- Salva novamente no banco ---
         return pacienteRepository.save(pacienteExistente);

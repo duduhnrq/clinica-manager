@@ -2,23 +2,19 @@
   <!--Header-->
   <header class="w-full flex justify-between">
     <div class="flex flex-col gap-1 items-start">
-      <p class="m-0 font-medium text-xl">Nova Ficha de Paciente</p>
-      <span class="text-sm text-gray-500">Criar uma nova ficha para o paciente</span>
+      <p class="m-0 font-medium text-xl">Editar Paciente</p>
+      <span class="text-sm text-gray-500">Atualizar informações do paciente</span>
     </div>
 
     <button
       class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 cursor-pointer transition-all duration-300 ease-in-out"
-      routerLink="/pacientes"
+      [routerLink]="['/pacientes/ver-detalhes', id]"
     >
-      Voltar à Lista
+      Cancelar
     </button>
   </header>
 
-  <form
-    #form="ngForm"
-    (ngSubmit)="salvarFicha(form)"
-    class="flex flex-col gap-6 w-full m-auto"
-  >
+  <form [formGroup]="form" (ngSubmit)="atualizar()" class="flex flex-col gap-6 w-full m-auto">
     <!--Dados Pessoais-->
     <div class="w-full flex flex-col gap-4">
       <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
@@ -30,11 +26,10 @@
           <div class="flex flex-col">
             <label class="text-sm font-medium">Nome Completo *</label>
             <input
-              [(ngModel)]="paciente.nomeCompleto"
               name="nomeCompleto"
               required
               type="text"
-              placeholder="Nome completo do paciente"
+              formControlName="nomeCompleto"
               class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -43,22 +38,22 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Data de Nascimento *</label>
               <input
-                [(ngModel)]="paciente.dataNascimento"
                 name="dataNascimento"
                 required
                 type="date"
+                formControlName="dataNascimento"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Estado Civil *</label>
               <select
-                [(ngModel)]="paciente.estadoCivil"
                 name="estadoCivil"
+                formControlName="estadoCivil"
                 required
                 class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               >
-                <option value="" disabled selected>Selecione</option>
+                <option value="" disabled>Selecione</option>
                 <option value="Solteiro">Solteiro(a)</option>
                 <option value="Casado">Casado(a)</option>
                 <option value="Divorciado">Divorciado(a)</option>
@@ -72,24 +67,10 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Naturalidade *</label>
               <input
-                [(ngModel)]="paciente.naturalidade"
                 name="naturalidade"
                 required
                 type="text"
-                placeholder="Ex: Recife, PE"
-                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div class="flex flex-col w-full">
-              <label class="text-sm font-medium">CPF *</label>
-              <input
-                [(ngModel)]="paciente.cpf"
-                name="cpf"
-                required
-                type="text"
-                placeholder="000.000.000-00"
-                maxlength="14"
-                (input)="onCpfInput($event)"
+                formControlName="naturalidade"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -97,26 +78,23 @@
 
           <div class="w-full flex gap-4">
             <div class="flex flex-col w-full">
-              <label class="text-sm font-medium">E-mail *</label>
+              <label class="text-sm font-medium">CPF *</label>
               <input
-                [(ngModel)]="paciente.email"
-                name="email"
+                name="cpf"
                 required
-                type="email"
-                placeholder="E-mail do paciente"
+                type="text"
+                maxlength="14"
+                formControlName="cpf"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-full">
-              <label class="text-sm font-medium">Telefone *</label>
+              <label class="text-sm font-medium">E-mail *</label>
               <input
-                [(ngModel)]="paciente.telefone"
-                name="telefone"
+                name="email"
                 required
-                type="text"
-                placeholder="(00) 00000-0000"
-                maxlength="15"
-                (input)="onTelefoneInput($event)"
+                type="email"
+                formControlName="email"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -126,11 +104,21 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Profissão *</label>
               <input
-                [(ngModel)]="paciente.profissao"
                 name="profissao"
                 required
                 type="text"
-                placeholder="Profissão"
+                formControlName="profissao"
+                class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="text-sm font-medium">Telefone *</label>
+              <input
+                name="telefone"
+                required
+                type="text"
+                formControlName="telefone"
+                maxlength="15"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -151,33 +139,30 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Rua *</label>
               <input
-                [(ngModel)]="paciente.rua"
                 name="rua"
                 required
                 type="text"
-                placeholder="Rua"
+                formControlName="rua"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-sm">
               <label class="text-sm font-medium">Número *</label>
               <input
-                [(ngModel)]="paciente.numero"
                 name="numero"
                 required
                 type="text"
-                placeholder="Número"
+                formControlName="numero"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Bairro *</label>
               <input
-                [(ngModel)]="paciente.bairro"
                 name="bairro"
                 required
                 type="text"
-                placeholder="Bairro"
+                formControlName="bairro"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -187,35 +172,31 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">CEP *</label>
               <input
-                [(ngModel)]="paciente.cep"
                 name="cep"
                 required
                 type="text"
-                placeholder="00000-000"
+                formControlName="cep"
                 maxlength="9"
-                (input)="onCepInput($event)"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Cidade *</label>
               <input
-                [(ngModel)]="paciente.cidade"
                 name="cidade"
                 required
                 type="text"
-                placeholder="Cidade"
+                formControlName="cidade"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Estado *</label>
               <input
-                [(ngModel)]="paciente.estado"
                 name="estado"
                 required
                 type="text"
-                placeholder="Estado"
+                formControlName="estado"
                 class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -227,8 +208,8 @@
     <!--Salvar-->
     <div class="w-full flex justify-center">
       <button
+        (click)="atualizar()"
         type="button"
-        (click)="salvarFicha(form)"
         class="bg-blue-500 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 cursor-pointer transition-all duration-300 ease-in-out flex items-center gap-1"
       >
         <svg
@@ -249,196 +230,4 @@
       </button>
     </div>
   </form>
-
-  <!-- Modal de Sucesso -->
-  <div
-    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
-    *ngIf="modalSucessoAberto"
-  >
-    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm text-center">
-      <div class="w-full flex justify-end" (click)="fecharModalSucesso()">
-        <svg
-          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18 17.94 6M18 18 6.06 6"
-          />
-        </svg>
-      </div>
-      <svg
-        class="w-16 h-16 text-blue-500 m-auto mb-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-
-      <h2 class="m-0 text-xl font-medium mb-1">Paciente cadastrado com sucesso!</h2>
-      <p class="text-gray-600 mb-3">Os dados foram salvos corretamente.</p>
-    </div>
-  </div>
-
-  <!-- Modal de Erro -->
-  <div
-    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
-    *ngIf="modalErroAberto"
-  >
-    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm text-center">
-      <div class="w-full flex justify-end" (click)="fecharModal()">
-        <svg
-          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18 17.94 6M18 18 6.06 6"
-          />
-        </svg>
-      </div>
-      <svg
-        class="w-16 h-16 text-blue-500 m-auto mb-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-
-      <h2 class="m-0 text-xl font-medium mb-1">Erro ao cadastrar paciente!</h2>
-      <p class="text-gray-600 mb-3">Os dados não foram salvos corretamente.</p>
-    </div>
-  </div>
-
-  <!-- Modal de Campos Obrigatórios -->
-  <div
-    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
-    *ngIf="modalObrigatorioAberto"
-  >
-    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md text-center">
-      <div class="w-full flex justify-end" (click)="fecharModal()">
-        <svg
-          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18 17.94 6M18 18 6.06 6"
-          />
-        </svg>
-      </div>
-      <svg
-        class="w-16 h-16 text-blue-500 m-auto mb-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-
-      <h2 class="m-0 text-xl font-medium mb-1">Campos obrigatórios não preenchidos!</h2>
-      <p class="text-gray-600 mb-3">Por favor, preencha todos os campos obrigatórios.</p>
-    </div>
-  </div>
-
-  <!-- Modal de CPF já cadastrado -->
-  <div
-    class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
-    *ngIf="modalCpfAberto"
-  >
-    <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md text-center">
-      <div class="w-full flex justify-end" (click)="fecharModal()">
-        <svg
-          class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18 17.94 6M18 18 6.06 6"
-          />
-        </svg>
-      </div>
-      <svg
-        class="w-16 h-16 text-blue-500 m-auto mb-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-        />
-      </svg>
-
-      <h2 class="m-0 text-xl font-medium mb-1">CPF já cadastrado!</h2>
-      <p class="text-gray-600 mb-3">Esse CPF já está cadastrado no sistema.</p>
-    </div>
-  </div>
 </div>

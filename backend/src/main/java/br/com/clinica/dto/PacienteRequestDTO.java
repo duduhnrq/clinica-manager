@@ -25,9 +25,6 @@ public record PacienteRequestDTO(
     String cpf,
     
     @NotBlank
-    String identidade,
-    
-    @NotBlank
     String estadoCivil,
     
     @NotBlank

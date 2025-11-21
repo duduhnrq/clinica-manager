@@ -45,29 +45,33 @@ export class EditarPaciente implements OnInit {
   }
 
   carregarPaciente() {
-  this.pacienteService.buscarPorId(this.id).subscribe((p: any) => {
-    console.log("RETORNO DO BACKEND:", p);
+    this.pacienteService.buscarPorId(this.id).subscribe((p: any) => {
+      const endereco = p.endereco || {};
 
-    const endereco = p.endereco || {};
-
-    this.form.patchValue({
-      ...p,
-      rua: endereco.rua || '',
-      numero: endereco.numero || '',
-      bairro: endereco.bairro || '',
-      cep: endereco.cep || '',
-      cidade: endereco.cidade || '',
-      estado: endereco.estado || ''
+      this.form.patchValue({
+        ...p,
+        rua: endereco.rua || '',
+        numero: endereco.numero || '',
+        bairro: endereco.bairro || '',
+        cep: endereco.cep || '',
+        cidade: endereco.cidade || '',
+        estado: endereco.estado || '',
+      });
     });
-  });
-}
+  }
+  
+  modalSucessoAberto = false;
 
+  fecharModalSucesso() {
+    this.modalSucessoAberto = false;
+    this.router.navigate(['/pacientes/ver-detalhes', this.id]);
+  }
 
   atualizar() {
     if (this.form.invalid) return;
 
     this.pacienteService.atualizar(this.id, this.form.value).subscribe(() => {
-      this.router.navigate(['/pacientes/ver-detalhes', this.id]);
+      this.modalSucessoAberto = true;
     });
   }
 }

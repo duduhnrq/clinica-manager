@@ -14,11 +14,7 @@
     </button>
   </header>
 
-  <form
-    #form="ngForm"
-    (ngSubmit)="salvarFicha(form)"
-    class="flex flex-col gap-6 w-full m-auto"
-  >
+  <form #form="ngForm" (ngSubmit)="salvarFicha(form)" class="flex flex-col gap-6 w-full m-auto">
     <!--Dados Pessoais-->
     <div class="w-full flex flex-col gap-4">
       <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-8">
@@ -124,7 +120,7 @@
 
           <div class="w-full flex gap-4">
             <div class="flex flex-col w-full">
-              <label class="text-sm font-medium">Profissão *</label>
+              <label class="text-sm font-medium">Profissão</label>
               <input
                 [(ngModel)]="paciente.profissao"
                 name="profissao"
@@ -385,7 +381,7 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
         />
       </svg>
 

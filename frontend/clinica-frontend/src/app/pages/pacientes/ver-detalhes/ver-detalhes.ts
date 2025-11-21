@@ -37,23 +37,35 @@ export class VerDetalhes implements OnInit {
     }
   }
 
+  modalErroAberto = false;
+
   removerPaciente() {
     if (!this.paciente?.id) {
       alert('ID do paciente não encontrado.');
       return;
     }
 
-    const confirmar = confirm(
-      `Tem certeza que deseja remover o paciente "${this.paciente.nomeCompleto}"?`
-    );
-    if (!confirmar) return;
-
     this.pacienteService.remover(this.paciente.id).subscribe({
       next: () => this.router.navigate(['/pacientes']),
       error: (err) => {
+        this.modalErroAberto = true;
         console.error('Erro ao remover paciente:', err);
         alert('Erro ao remover paciente.');
       },
     });
+  }
+
+  fecharModalErro() {
+    this.modalErroAberto = false;
+  }
+
+  modalConfirmacaoAberto = false;
+
+  fecharModalConfirmacao() {
+    this.modalConfirmacaoAberto = false;
+  }
+
+  abrirModalConfirmacao() {
+    this.modalConfirmacaoAberto = true;
   }
 }

@@ -1,0 +1,615 @@
+<div class="p-8 text-center font-['Roboto',sans-serif] flex flex-col gap-6 max-w-7xl m-auto">
+  <!--Header-->
+  <header class="w-full flex justify-between">
+    <div class="flex flex-col gap-1 items-start">
+      <p class="m-0 font-medium text-xl transition-all duration-300 ease-in-out">Agenda</p>
+      <span class="text-sm text-gray-500">Consultar agendamentos e operações</span>
+    </div>
+
+    <button
+      class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+      routerLink="/"
+    >
+      Voltar ao Menu
+    </button>
+  </header>
+
+  <div class="w-full flex justify-end">
+    <button
+      class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer"
+      (click)="abrirModal()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-4 h-4 text-white inline-block mr-1"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      Novo Agendamento
+    </button>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <!--Cards-->
+    <div class="w-full flex gap-4">
+      <div class="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-lg p-6">
+        <svg
+          class="w-8 h-8 text-blue-600"
+          viewBox="0 0 34 37"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.4167 1.75V8.41667M10.0833 1.75V8.41667M1.75 15.0833H31.75M5.08333 5.08333H28.4167C30.2576 5.08333 31.75 6.57572 31.75 8.41667V31.75C31.75 33.591 30.2576 35.0833 28.4167 35.0833H5.08333C3.24238 35.0833 1.75 33.591 1.75 31.75V8.41667C1.75 6.57572 3.24238 5.08333 5.08333 5.08333Z"
+            stroke="currentColor"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div class="flex flex-col items-start gap-1">
+          <span class="text-sm font-medium text-gray-600">Total de Agendamentos</span>
+          <span class="text-2xl font-medium">{{ obterTotalAgendamentos() }}</span>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-lg p-6">
+        <svg
+          class="w-8 h-8 text-blue-600"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M34.7335 7.68345C33.8822 6.83179 32.8715 6.15619 31.759 5.69525C30.6466 5.23432 29.4543 4.99707 28.2501 4.99707C27.046 4.99707 25.8536 5.23432 24.7412 5.69525C23.6288 6.15619 22.618 6.83179 21.7668 7.68345L20.0001 9.45011L18.2335 7.68345C16.514 5.96396 14.1818 4.99796 11.7501 4.99796C9.3184 4.99796 6.98627 5.96396 5.26678 7.68345C3.5473 9.40293 2.5813 11.7351 2.5813 14.1668C2.5813 16.5985 3.5473 18.9306 5.26678 20.6501L20.0001 35.3834L34.7335 20.6501C35.5851 19.7989 36.2607 18.7881 36.7216 17.6757C37.1826 16.5633 37.4198 15.3709 37.4198 14.1668C37.4198 12.9626 37.1826 11.7703 36.7216 10.6579C36.2607 9.54542 35.5851 8.53471 34.7335 7.68345Z"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div class="flex flex-col items-start gap-1">
+          <span class="text-sm font-medium text-gray-600">Consultas</span>
+          <span class="text-2xl font-medium">{{ obterTotalConsultas() }}</span>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-lg p-6">
+        <svg
+          class="w-8 h-8 text-blue-600"
+          viewBox="0 0 32 34"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M30.0833 3.41667L10.2833 23.2167M20.8667 20.8833L30.0833 30.0833M10.2833 10.2833L16.75 16.75M11.75 6.75C11.75 9.51142 9.51142 11.75 6.75 11.75C3.98858 11.75 1.75 9.51142 1.75 6.75C1.75 3.98858 3.98858 1.75 6.75 1.75C9.51142 1.75 11.75 3.98858 11.75 6.75ZM11.75 26.75C11.75 29.5114 9.51142 31.75 6.75 31.75C3.98858 31.75 1.75 29.5114 1.75 26.75C1.75 23.9886 3.98858 21.75 6.75 21.75C9.51142 21.75 11.75 23.9886 11.75 26.75Z"
+            stroke="currentColor"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div class="flex flex-col items-start gap-1">
+          <span class="text-sm font-medium text-gray-600">Operações</span>
+          <span class="text-2xl font-medium">{{ obterTotalOperacoes() }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="w-full flex flex-col items-center gap-4 bg-white border border-gray-200 rounded-lg p-6"
+    >
+      <div class="w-full flex justify-center items-center">
+        <div
+          class="bg-gray-100 p-4 rounded-lg border border-gray-200 transition-all duration-300 hover:bg-gray-200 cursor-pointer"
+          (click)="mesAnterior()"
+        >
+          <svg
+            class="h-3 w-3 text-black"
+            viewBox="0 0 6 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.80005 8.80005L0.800049 4.80005L4.80005 0.800049"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <span
+          class="text-lg font-medium m-auto rounded-md cursor-pointer transition-all duration-300 ease-in-out px-4 py-2 hover:bg-blue-100 hover:text-blue-600"
+          (click)="abrirModalData()"
+          >{{ nomeMes }}</span
+        >
+
+        <div
+          class="bg-gray-100 p-4 rounded-lg border border-gray-200 transition-all duration-300 hover:bg-gray-200 cursor-pointer"
+          (click)="proximoMes()"
+        >
+          <svg
+            class="h-3 w-3 text-black"
+            viewBox="0 0 6 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.800049 8.80005L4.80005 4.80005L0.800049 0.800049"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <div *ngIf="diasComAgendamentos.length > 0" class="w-full flex justify-start py-4">
+          <span class="text-gray-500 text-sm"
+            >{{ diasComAgendamentos.length }} dia(s) com agendamentos</span
+          >
+        </div>
+
+        <div *ngIf="diasComAgendamentos.length === 0" class="py-8">
+          <span class="text-sm text-gray-500">Nenhum agendamento neste mês</span>
+        </div>
+
+        <div *ngFor="let dia of diasComAgendamentos">
+          <div
+            class="flex items-center justify-between border border-gray-200 rounded-lg px-6 py-3 cursor-pointer transition-all duration-300 mb-2"
+            [ngClass]="
+              dia.data === dataSelecionadaIso
+                ? 'bg-blue-500 hover:bg-blue-400'
+                : 'bg-gray-100 hover:bg-gray-200 text-black'
+            "
+            (click)="selecionarDia(dia)"
+          >
+            <div class="flex items-center gap-4">
+              <svg
+                class="w-4 h-4"
+                [ngClass]="dia.data === dataSelecionadaIso ? 'text-white' : 'text-black'"
+                viewBox="0 0 34 37"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M23.4167 1.75V8.41667M10.0833 1.75V8.41667M1.75 15.0833H31.75M5.08333 5.08333H28.4167C30.2576 5.08333 31.75 6.57572 31.75 8.41667V31.75C31.75 33.591 30.2576 35.0833 28.4167 35.0833H5.08333C3.24238 35.0833 1.75 33.591 1.75 31.75V8.41667C1.75 6.57572 3.24238 5.08333 5.08333 5.08333Z"
+                  stroke="currentColor"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p
+                class="text-sm font-medium"
+                [ngClass]="dia.data === dataSelecionadaIso ? 'text-white' : 'text-black'"
+              >
+                {{ dia.diaSemana }}, {{ dia.dia }} de {{ meses[dia.mes - 1] | titlecase }}
+              </p>
+            </div>
+            <span
+              class="rounded-full px-2 py-1 text-xs font-medium"
+              [ngClass]="
+                dia.data === dataSelecionadaIso
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-300 text-black'
+              "
+            >
+              {{ dia.agendamentos.length }}
+              {{ dia.agendamentos.length === 1 ? 'agendamento' : 'agendamentos' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agendamentos da Data Selecionada -->
+  <div
+    *ngIf="dataSelecionada"
+    class="w-full flex flex-col items-center gap-4 bg-white border border-gray-200 rounded-lg p-6"
+  >
+    <span class="text-lg font-medium w-full text-start">Agendamentos ({{ dataSelecionada }})</span>
+    <div
+      *ngIf="agendamentosDataSelecionada.length === 0"
+      class="bg-gray-100 w-full p-4 text-center text-gray-500 rounded-lg"
+    >
+      <span class="text-sm">Nenhum agendamento nesta data</span>
+    </div>
+
+    <div
+      *ngFor="let ag of agendamentosDataSelecionada"
+      class="bg-gray-100 w-full p-4 border border-gray-200 rounded-lg flex flex-col gap-4"
+    >
+      <div class="flex justify-between items-center">
+        <div class="flex gap-2 items-center">
+          <svg
+            *ngIf="ag.tipo === 'consulta'"
+            class="w-4 h-4 text-black"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M34.7335 7.68345C33.8822 6.83179 32.8715 6.15619 31.759 5.69525C30.6466 5.23432 29.4543 4.99707 28.2501 4.99707C27.046 4.99707 25.8536 5.23432 24.7412 5.69525C23.6288 6.15619 22.618 6.83179 21.7668 7.68345L20.0001 9.45011L18.2335 7.68345C16.514 5.96396 14.1818 4.99796 11.7501 4.99796C9.3184 4.99796 6.98627 5.96396 5.26678 7.68345C3.5473 9.40293 2.5813 11.7351 2.5813 14.1668C2.5813 16.5985 3.5473 18.9306 5.26678 20.6501L20.0001 35.3834L34.7335 20.6501C35.5851 19.7989 36.2607 18.7881 36.7216 17.6757C37.1826 16.5633 37.4198 15.3709 37.4198 14.1668C37.4198 12.9626 37.1826 11.7703 36.7216 10.6579C36.2607 9.54542 35.5851 8.53471 34.7335 7.68345Z"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            *ngIf="ag.tipo === 'operacao'"
+            class="w-4 h-4 text-black"
+            viewBox="0 0 32 34"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M30.0833 3.41667L10.2833 23.2167M20.8667 20.8833L30.0833 30.0833M10.2833 10.2833L16.75 16.75M11.75 6.75C11.75 9.51142 9.51142 11.75 6.75 11.75C3.98858 11.75 1.75 9.51142 1.75 6.75C1.75 3.98858 3.98858 1.75 6.75 1.75C9.51142 1.75 11.75 3.98858 11.75 6.75ZM11.75 26.75C11.75 29.5114 9.51142 31.75 6.75 31.75C3.98858 31.75 1.75 29.5114 1.75 26.75C1.75 23.9886 3.98858 21.75 6.75 21.75C9.51142 21.75 11.75 23.9886 11.75 26.75Z"
+              stroke="currentColor"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p class="text-md font-medium">{{ ag.pacienteNome }}</p>
+          <div
+            class="text-xs font-medium text-blue-600 bg-blue-100 border border-blue-200 rounded-full px-3"
+          >
+            {{ ag.tipo === 'consulta' ? 'Consulta' : 'Operação' }}
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex gap-1 items-center">
+            <svg class="w-4 h-4" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.46647 3.46672V7.46672L10.1331 8.80005M14.1331 7.46672C14.1331 11.1486 11.1484 14.1334 7.46647 14.1334C3.78457 14.1334 0.799805 11.1486 0.799805 7.46672C0.799805 3.78482 3.78457 0.800049 7.46647 0.800049C11.1484 0.800049 14.1331 3.78482 14.1331 7.46672Z"
+                stroke="#6a7282"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="text-sm font-medium text-gray-500">{{ ag.horario }}</span>
+          </div>
+          <div class="flex gap-1">
+            <div
+              class="bg-white border border-gray-200 rounded-lg p-2 hover:bg-gray-200 transition-all duration-300 ease-in-out cursor-pointer"
+              (click)="abrirModalEdicao(ag)"
+            >
+              <svg
+                class="w-3 h-3 text-gray-900"
+                viewBox="0 0 12 12"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.33333 10.6667H2.28333L8.8 4.15L7.85 3.2L1.33333 9.71667V10.6667ZM0 12V9.16667L8.8 0.383333C8.93333 0.261111 9.08056 0.166667 9.24167 0.1C9.40278 0.0333333 9.57222 0 9.75 0C9.92778 0 10.1 0.0333333 10.2667 0.1C10.4333 0.166667 10.5778 0.266667 10.7 0.4L11.6167 1.33333C11.75 1.45556 11.8472 1.6 11.9083 1.76667C11.9694 1.93333 12 2.1 12 2.26667C12 2.44444 11.9694 2.61389 11.9083 2.775C11.8472 2.93611 11.75 3.08333 11.6167 3.21667L2.83333 12H0ZM8.31667 3.68333L7.85 3.2L8.8 4.15L8.31667 3.68333Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="bg-white border border-gray-200 rounded-lg p-2 hover:bg-red-200 transition-all duration-300 ease-in-out cursor-pointer"
+              (click)="deletarAgendamento(ag.id)"
+            >
+              <svg
+                class="w-3 h-3"
+                viewBox="0 0 14 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.799805 3.46672H2.13314M2.13314 3.46672H12.7998M2.13314 3.46672L2.13314 12.8C2.13314 13.1537 2.27361 13.4928 2.52366 13.7429C2.77371 13.9929 3.11285 14.1334 3.46647 14.1334H10.1331C10.4868 14.1334 10.8259 13.9929 11.0759 13.7429C11.326 13.4928 11.4665 13.1537 11.4665 12.8V3.46672M4.13314 3.46672V2.13338C4.13314 1.77976 4.27361 1.44062 4.52366 1.19057C4.77371 0.940525 5.11285 0.800049 5.46647 0.800049H8.13314C8.48676 0.800049 8.8259 0.940525 9.07595 1.19057C9.326 1.44062 9.46647 1.77976 9.46647 2.13338V3.46672M5.46647 6.80005V10.8M8.13314 6.80005V10.8"
+                  stroke="#900B09"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex justify-start">
+        <span class="text-sm font-medium text-gray-500">
+          {{ ag.tipo === 'consulta' ? 'Consulta' : 'Operação: ' + ag.procedimento }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Novo Agendamento -->
+  <div *ngIf="modalAberto" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white w-lg rounded-xl shadow-xl p-6 animate-fadeIn">
+      <div class="flex justify-between items-start mb-4">
+        <div class="flex flex-col gap-1 items-start mb-6">
+          <p class="m-0 font-medium text-md transition-all duration-300 ease-in-out">
+            {{ editandoAgendamento ? 'Editar Agendamento' : 'Novo Agendamento' }}
+          </p>
+          <span class="text-sm text-gray-500"
+            >Preencha os dados para {{ editandoAgendamento ? 'editar o agendamento.' : 'criar um novo agendamento.' }}</span
+          >
+        </div>
+
+        <div
+          class="text-gray-500 hover:text-gray-700 cursor-pointer text-2xl transition-colors duration-300 ease-in-out"
+          (click)="fecharModal()"
+        >
+          &times;
+        </div>
+      </div>
+
+      <form class="flex flex-col gap-4" [formGroup]="form" (ngSubmit)="salvarAgendamento()">
+        <input type="hidden" formControlName="pacienteId" />
+        <div class="flex flex-col gap-1 text-start">
+          <label class="text-sm font-medium">Paciente *</label>
+
+          <input
+            type="text"
+            formControlName="pacienteBusca"
+            placeholder="Buscar paciente..."
+            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+          />
+          <div
+            *ngIf="mostrarListaPacientes && pacientesFiltrados.length > 0"
+            class="border rounded-md overflow-y-auto bg-white absolute shadow w-lg mt-16"
+          >
+            <div
+              *ngFor="let p of pacientesFiltrados"
+              class="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+              (click)="selecionarPaciente(p)"
+            >
+              {{ p.nomeCompleto }}
+            </div>
+            <div *ngIf="pacientesFiltrados.length === 0" class="px-3 py-2 text-sm text-gray-500">
+              Nenhum paciente encontrado.
+            </div>
+          </div>
+
+          <div *ngIf="pacienteSelecionado" class="text-xs text-gray-600 mt-1">
+            Selecionado: <strong>{{ pacienteSelecionado.nomeCompleto }}</strong>
+            <button
+              type="button"
+              class="ml-2 text-red-500 hover:text-red-700 text-xs font-medium cursor-pointer transition-colors duration-300 ease-in-out"
+              (click)="
+                pacienteSelecionado = null;
+                form.get('pacienteBusca')?.setValue('');
+                form.get('pacienteId')?.setValue('')
+              "
+            >
+              (Limpar)
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1 text-start">
+          <label class="text-sm font-medium">Tipo *</label>
+          <select
+            formControlName="tipo"
+            class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+          >
+            <option value="" disabled selected hidden>Selecione</option>
+            <option value="consulta">Consulta</option>
+            <option value="operacao">Operação</option>
+          </select>
+        </div>
+
+        <div *ngIf="form.get('tipo')?.value === 'operacao'" class="flex flex-col gap-1">
+          <label class="text-sm font-medium text-start">Procedimento</label>
+          <input
+            type="text"
+            formControlName="procedimento"
+            class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+            placeholder="Ex: Rinoplastia"
+          />
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col flex-1 text-start">
+            <label class="text-sm font-medium">Data *</label>
+            <input
+              type="date"
+              formControlName="data"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+            />
+          </div>
+
+          <div class="flex flex-col flex-1 text-start">
+            <label class="text-sm font-medium">Horário *</label>
+            <input
+              type="time"
+              formControlName="horario"
+              class="placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-4">
+          <button
+            type="button"
+            class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+            (click)="fecharModal()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            {{ editandoAgendamento ? 'Salvar Alterações' : 'Salvar Agendamento' }}
+          </button>
+        </div>
+      </form>
+
+      <!-- Modal de Sucesso -->
+      <div
+        class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+        *ngIf="modalSucessoAberto"
+      >
+        <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-sm text-center">
+          <div class="w-full flex justify-end" (click)="modalSucessoAberto = false">
+            <svg
+              class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18 17.94 6M18 18 6.06 6"
+              />
+            </svg>
+          </div>
+          <svg
+            class="w-16 h-16 text-blue-500 m-auto mb-4"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+
+          <h2 class="m-0 text-xl font-medium mb-1">{{ editandoAgendamento ? 'Agendamento atualizado com sucesso!' : 'Agendamento salvo com sucesso!' }}</h2>
+          <p class="text-gray-600 mb-3">Os dados foram salvos corretamente.</p>
+        </div>
+
+        <!-- Modal de Erro -->
+        <div
+          class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50"
+          *ngIf="modalErroAberto"
+        >
+          <div class="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md text-center">
+            <div class="w-full flex justify-end" (click)="modalErroAberto = false">
+              <svg
+                class="w-6 h-6 text-gray-500 hover:text-gray-600 cursor-pointer transition-all duration-300 ease-in-out"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18 17.94 6M18 18 6.06 6"
+                />
+              </svg>
+            </div>
+            <svg
+              class="w-16 h-16 text-blue-500 m-auto mb-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+
+            <h2 class="m-0 text-xl font-medium mb-1">Campos obrigatórios não preenchidos!</h2>
+            <p class="text-gray-600 mb-3">Por favor, preencha todos os campos obrigatórios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal de Mês e Ano-->
+  <div
+    *ngIf="modalDataAberto"
+    class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+  >
+    <div class="bg-white w-sm rounded-xl shadow-xl p-6 animate-fadeIn">
+      <div class="flex justify-between items-start mb-4">
+        <div class="flex flex-col gap-1 items-start mb-6">
+          <p class="m-0 font-medium text-md transition-all duration-300 ease-in-out">
+            Selecionar Mês e Ano
+          </p>
+          <span class="text-sm text-gray-500">Escolha o mês e ano que deseja visualizar.</span>
+        </div>
+
+        <div
+          class="text-gray-500 hover:text-gray-700 cursor-pointer text-2xl transition-colors duration-300 ease-in-out"
+          (click)="fecharModalData()"
+        >
+          &times;
+        </div>
+      </div>
+
+      <form class="flex flex-col gap-4" [formGroup]="dataForm" (ngSubmit)="confirmarData()">
+        <div class="flex flex-col gap-1 text-start">
+          <label class="text-sm font-medium">Mês</label>
+          <select
+            formControlName="mes"
+            class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+          >
+            <option *ngFor="let m of meses; let i = index" [value]="i">{{ m | titlecase }}</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1 text-start">
+          <label class="text-sm font-medium">Ano</label>
+          <select
+            formControlName="ano"
+            class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500 ng-pristine ng-invalid ng-touched"
+          >
+            <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+          </select>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-4">
+          <button
+            type="button"
+            class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+            (click)="fecharModalData()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            class="bg-blue-500 border border-gray-200 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer"
+          >
+            Confirmar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

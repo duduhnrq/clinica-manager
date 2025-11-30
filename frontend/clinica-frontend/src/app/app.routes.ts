@@ -4,6 +4,7 @@ import { Pacientes } from './pages/pacientes/pacientes';
 import { NovaFicha } from './pages/pacientes/nova-ficha/nova-ficha';
 import { VerDetalhes } from './pages/pacientes/ver-detalhes/ver-detalhes';
 import { EditarPaciente } from './pages/pacientes/ver-detalhes/editar-paciente/editar-paciente';
+import { Agenda } from './pages/agenda/agenda';
 
 export const routes: Routes = [
   { path: '', component: MenuPrincipal },
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: 'pacientes/nova-ficha', component: NovaFicha },
   { path: 'pacientes/ver-detalhes/:id', component: VerDetalhes },
   { path: 'pacientes/ver-detalhes/editar-paciente/:id', component: EditarPaciente },
+  { path: 'agenda', component: Agenda },
 ];

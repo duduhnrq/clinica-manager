@@ -1,9 +1,7 @@
 services:
   - type: web
     name: clinica-backend
+    runtime: docker
     rootDir: backend
-    buildCommand: "./mvnw clean package -DskipTests"
-    startCommand: "./mvnw spring-boot:run"
-    envVars:
-      - key: JAVA_VERSION
-        value: "21"
+    plan: free
+    autoDeploy: true

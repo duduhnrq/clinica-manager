@@ -37,7 +37,6 @@ public class PacienteService {
             throw new RegraDeNegocioException("CPF já cadastrado no sistema."); // MUDOU
         }
         
-        // 3. E MUDE AQUI
         if (pacienteRepository.findByEmail(dto.email()).isPresent()) {
             throw new RegraDeNegocioException("Email já cadastrado no sistema."); // MUDOU
         }

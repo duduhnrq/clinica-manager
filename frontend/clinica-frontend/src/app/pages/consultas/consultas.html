@@ -1,0 +1,112 @@
+<div class="p-8 text-center font-['Roboto',sans-serif] flex flex-col gap-4 max-w-7xl m-auto">
+  <!--Header-->
+  <header class="w-full flex justify-between">
+    <div class="flex flex-col gap-1 items-start">
+      <p class="m-0 font-medium text-xl transition-all duration-300 ease-in-out">
+        Histórico de Consultas
+      </p>
+      <span class="text-sm text-gray-500">Gerenciar consultas e observações</span>
+    </div>
+
+    <button
+      class="bg-white border border-gray-200 px-4 h-10 rounded-md font-medium text-sm hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+      routerLink="/"
+    >
+      Voltar ao Menu
+    </button>
+  </header>
+
+  <!-- Informações do Sistema -->
+  <div class="bg-white w-full px-4 py-8 rounded-lg border border-gray-200 flex flex-col gap-6">
+    <div class="flex items-center gap-2">
+      <svg
+        class="w-5 h-5 text-blue-500"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M13 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V9M13 2L20 9M13 2V9H20"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <h2 class="text-lg font-medium text-blue-500">Informações do Sistema</h2>
+    </div>
+
+    <div class="flex justify-between w-4xl m-auto">
+      <div class="flex flex-col items-center justify-center gap-2">
+        <span class="text-lg font-bold">{{ consultasAgendadas.length }}</span>
+        <span class="text-xs font-medium text-gray-500">Pacientes Recentes</span>
+      </div>
+      <div class="flex flex-col items-center justify-center gap-2">
+        <span class="text-lg font-bold">{{ totalConsultado }}</span>
+        <span class="text-xs font-medium text-gray-500">Consultas Realizadas</span>
+      </div>
+      <div class="flex flex-col items-center justify-center gap-2">
+        <span class="text-lg font-bold">{{ totalAguardando }}</span>
+        <span class="text-xs font-medium text-gray-500">Aguardando Consulta</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col gap-4">
+    <div class="w-full flex justify-start">
+      <span class="text-sm font-medium"
+        >Pacientes Recentes ({{ consultasAgendadas.length }})</span
+      >
+    </div>
+
+    <div *ngIf="carregando" class="py-8 text-center text-gray-500">Carregando...</div>
+    <div *ngIf="!carregando && nenhumRegistro" class="py-8 text-center text-gray-500">
+      Nenhuma consulta registrada nos últimos 2 meses.
+    </div>
+
+    <div *ngIf="!carregando && !nenhumRegistro" class="flex flex-col gap-3">
+      <div
+        *ngFor="let p of consultasAgendadas"
+        class="w-full bg-white shadow p-4 rounded-lg flex justify-between items-center"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-medium"
+          >
+            {{ (p.pacienteNome || '—').charAt(0).toUpperCase() }}
+          </div>
+          <div class="flex flex-col text-left">
+            <div class="text-md font-medium">{{ p.pacienteNome }}</div>
+            <div class="text-sm text-gray-500">Consulta: {{ p.data }}</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span
+            class="text-xs font-medium rounded-xl px-2 py-0.5"
+            [ngClass]="p.status === 'consultado' 
+              ? 'border border-green-500 text-green-500' 
+              : 'border border-blue-500 text-blue-500'"
+          >
+            {{ p.status === 'consultado' ? 'Consultado' : 'Aguardando Consulta' }}
+          </span>
+          <button
+            *ngIf="p.status !== 'consultado'"
+            class="flex items-center gap-3 text-white bg-blue-500 rounded-md py-2 px-6 text-sm font-medium hover:bg-blue-600 transition-all duration-300 ease-in-out cursor-pointer"
+            [routerLink]="['/consultas/consultar', p.id]"
+          >
+            Consultar
+          </button>
+          <button
+            *ngIf="p.status === 'consultado'"
+            class="flex items-center gap-3 text-black bg-white border border-gray-200 rounded-md py-2 px-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 ease-in-out cursor-pointer"
+            [routerLink]="['/consultas/consultar', p.id]"
+          >
+            Ver Detalhes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

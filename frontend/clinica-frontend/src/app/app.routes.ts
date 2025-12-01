@@ -5,6 +5,8 @@ import { NovaFicha } from './pages/pacientes/nova-ficha/nova-ficha';
 import { VerDetalhes } from './pages/pacientes/ver-detalhes/ver-detalhes';
 import { EditarPaciente } from './pages/pacientes/ver-detalhes/editar-paciente/editar-paciente';
 import { Agenda } from './pages/agenda/agenda';
+import { Consultas } from './pages/consultas/consultas'
+import { Consultar } from './pages/consultas/consultar/consultar';
 
 export const routes: Routes = [
   { path: '', component: MenuPrincipal },
@@ -13,4 +15,6 @@ export const routes: Routes = [
   { path: 'pacientes/ver-detalhes/:id', component: VerDetalhes },
   { path: 'pacientes/ver-detalhes/editar-paciente/:id', component: EditarPaciente },
   { path: 'agenda', component: Agenda },
+  { path: 'consultas', component: Consultas },
+  { path: 'consultas/consultar/:id', component: Consultar },
 ];

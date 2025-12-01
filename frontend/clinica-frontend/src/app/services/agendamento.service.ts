@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface Agendamento {
+export interface Agendamento {
   id: number;
   pacienteId: number;
   pacienteNome: string;
@@ -8,6 +8,16 @@ interface Agendamento {
   procedimento: string;
   data: string;
   horario: string;
+  status?: 'agendada' | 'consultado' | 'cancelada';
+
+  tipoConsulta?: string;
+  proximaConsulta?: string;
+  queixasPrincipais?: string;
+  exameFisico?: string;
+  diagnostico?: string;
+  tratamentoProposto?: string;
+  recomendacoes?: string;
+  observacoesGerais?: string;
 }
 
 @Injectable({

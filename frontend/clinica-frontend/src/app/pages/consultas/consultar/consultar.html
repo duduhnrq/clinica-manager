@@ -69,7 +69,9 @@
       </div>
       <div class="flex flex-col items-start justify-center gap-2">
         <span class="text-sm font-medium">Data de Nascimento:</span>
-        <span class="text-xs font-medium text-gray-500">{{ pacienteDetalhes?.dataNascimento || '—' }}</span>
+        <span class="text-xs font-medium text-gray-500">{{
+          pacienteDetalhes?.dataNascimento || '—'
+        }}</span>
       </div>
       <div class="flex flex-col items-start justify-center gap-2">
         <span class="text-sm font-medium">CPF:</span>
@@ -77,7 +79,9 @@
       </div>
       <div class="flex flex-col items-start justify-center gap-2">
         <span class="text-sm font-medium">Telefone:</span>
-        <span class="text-xs font-medium text-gray-500">{{ pacienteDetalhes?.telefone || '—' }}</span>
+        <span class="text-xs font-medium text-gray-500">{{
+          pacienteDetalhes?.telefone || '—'
+        }}</span>
       </div>
     </div>
   </div>
@@ -114,10 +118,16 @@
             class="text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
           >
             <option value="" disabled selected>Selecione</option>
-            <option value="Solteiro">Retorno</option>
-            <option value="Casado">Pré-Operatório</option>
-            <option value="Divorciado">Pós-Operatório</option>
-            <option value="Viuvo">Emergência</option>
+            <option value="avaliacao_inicial">Avaliação Inicial</option>
+            <option value="retorno">Retorno</option>
+            <option value="consulta_estetica">Consulta Estética</option>
+            <option value="pre_operatorio">Pré-Operatório</option>
+            <option value="pos_operatorio">Pós-Operatório</option>
+            <option value="acompanhamento">Acompanhamento</option>
+            <option value="emergencia">Emergência</option>
+            <option value="encaminhamento">Encaminhamento</option>
+            <option value="nutricional">Consulta Nutricional</option>
+            <option value="dermatologica">Consulta Dermatológica</option>
           </select>
         </div>
         <div class="flex flex-col w-full gap-1">
@@ -132,27 +142,61 @@
 
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Queixas Principais *</label>
-        <textarea [(ngModel)]="queixasPrincipais" required rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Descreva as queixas principais do paciente..."></textarea>
+        <textarea
+          [(ngModel)]="queixasPrincipais"
+          required
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Descreva as queixas principais do paciente..."
+        ></textarea>
       </div>
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Exame Físico *</label>
-        <textarea [(ngModel)]="exameFisico" required rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Descreva os achados do exame físico..."></textarea>
+        <textarea
+          [(ngModel)]="exameFisico"
+          required
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Descreva os achados do exame físico..."
+        ></textarea>
       </div>
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Diagnóstico *</label>
-        <textarea [(ngModel)]="diagnostico" required rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Diagnóstico médico..."></textarea>
+        <textarea
+          [(ngModel)]="diagnostico"
+          required
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Diagnóstico médico..."
+        ></textarea>
       </div>
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Tratamento Proposto *</label>
-        <textarea [(ngModel)]="tratamentoProposto" required rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Descreva o tratamento proposto..."></textarea>
+        <textarea
+          [(ngModel)]="tratamentoProposto"
+          required
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Descreva o tratamento proposto..."
+        ></textarea>
       </div>
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Recomendações</label>
-        <textarea [(ngModel)]="recomendacoes" rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Recomendações específicas para o paciente..."></textarea>
+        <textarea
+          [(ngModel)]="recomendacoes"
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Recomendações específicas para o paciente..."
+        ></textarea>
       </div>
       <div class="flex flex-col w-full">
         <label class="text-sm font-medium text-start">Observações Gerais</label>
-        <textarea [(ngModel)]="observacoesGerais" rows="4" class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500" placeholder="Observações adicionais..."></textarea>
+        <textarea
+          [(ngModel)]="observacoesGerais"
+          rows="4"
+          class="w-full mt-1 placeholder:text-gray-500 text-sm border border-gray-300 bg-gray-100 py-2 px-4 rounded-md transition-all duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-blue-500"
+          placeholder="Observações adicionais..."
+        ></textarea>
       </div>
     </div>
   </div>

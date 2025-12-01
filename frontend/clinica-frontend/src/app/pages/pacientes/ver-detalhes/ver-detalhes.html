@@ -101,9 +101,6 @@
         </svg>
         <h2>Informações Pessoais</h2>
       </div>
-      <!--<span class="text-xs font-medium bg-blue-500 text-white rounded-xl px-2 py-0.5"
-          >Consultado</span
-        >-->
     </div>
     <div class="flex flex-col gap-6">
       <div class="flex flex-col gap-1">
@@ -117,12 +114,28 @@
         }}</span>
       </div>
       <div class="flex flex-col gap-1">
-        <p class="text-md font-medium">Telefone:</p>
-        <span class="text-sm text-gray-500">{{ paciente?.telefone }}</span>
+        <p class="text-md font-medium">Estado Civil:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.estadoCivil }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Naturalidade:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.naturalidade }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">CPF:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.cpf }}</span>
       </div>
       <div class="flex flex-col gap-1">
         <p class="text-md font-medium">E-mail:</p>
         <span class="text-sm text-gray-500">{{ paciente?.email }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Telefone:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.telefone }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Profissão:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.profissao || 'Não informado' }}</span>
       </div>
       <hr class="text-gray-300" />
       <div class="flex flex-col gap-1">
@@ -130,6 +143,55 @@
         <span class="text-sm text-gray-500">{{
           paciente?.dataCadastro | date : 'dd/MM/yyyy - HH:mm'
         }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!--Endereço-->
+  <div class="w-full bg-white shadow p-6 rounded-lg text-left flex flex-col gap-6">
+    <div class="flex justify-between w-full items-center">
+      <div class="flex items-center gap-2 text-blue-500 text-xl font-medium">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+          />
+        </svg>
+        <h2>Endereço</h2>
+      </div>
+    </div>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Rua:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.rua }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Número:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.numero }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Bairro:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.bairro }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">CEP:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.cep }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Cidade:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.cidade }}</span>
+      </div>
+      <div class="flex flex-col gap-1">
+        <p class="text-md font-medium">Estado:</p>
+        <span class="text-sm text-gray-500">{{ paciente?.estado }}</span>
       </div>
     </div>
   </div>

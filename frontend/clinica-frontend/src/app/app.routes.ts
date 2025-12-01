@@ -7,6 +7,7 @@ import { EditarPaciente } from './pages/pacientes/ver-detalhes/editar-paciente/e
 import { Agenda } from './pages/agenda/agenda';
 import { Consultas } from './pages/consultas/consultas'
 import { Consultar } from './pages/consultas/consultar/consultar';
+import { Operacoes } from './pages/operacoes/operacoes';
 
 export const routes: Routes = [
   { path: '', component: MenuPrincipal },
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'agenda', component: Agenda },
   { path: 'consultas', component: Consultas },
   { path: 'consultas/consultar/:id', component: Consultar },
+  { path: 'operacoes', component: Operacoes },
 ];

@@ -8,7 +8,7 @@ export interface Agendamento {
   procedimento: string;
   data: string;
   horario: string;
-  status?: 'agendada' | 'consultado' | 'cancelada';
+  status?: 'agendada' | 'consultado' | 'realizada' | 'cancelada';
 
   tipoConsulta?: string;
   proximaConsulta?: string;

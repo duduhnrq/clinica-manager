@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: clinica-backend
+    rootDir: backend
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "./mvnw spring-boot:run"
+    envVars:
+      - key: JAVA_VERSION
+        value: "21"

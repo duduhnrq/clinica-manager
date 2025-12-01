@@ -21,9 +21,10 @@ O sistema será desenvolvido em **Java (Spring Boot)** no back-end e **Angular**
 - **Product Owner (PO):** Eduardo Henrique 
 - **Scrum Master:** Luiz Henrique
 - **Developers:**  
-  - Luiz Henrique e Pedro Vinicius (Back-end)  
-  - Eduardo Henrique e Pedro Marrocos (Front-end)  
-  - Cauã dos Santos e Paulo Marrocos (Banco de Dados)
+  - Luiz Henrique e Cauã dos Santos (Back-end)  
+  - Eduardo Henrique (Front-end)  
+  - Pedro Vinicius e Paulo Marrocos (Banco de Dados)
+  - Pedro Marrocos (QA)
  
 ## 🏛️ Organização do Projeto
 Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público e transparente gerenciado no Trello. Você pode acompanhar nosso progresso e as próximas funcionalidades planejadas.

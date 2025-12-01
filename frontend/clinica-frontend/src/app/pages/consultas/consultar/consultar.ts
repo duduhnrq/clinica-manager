@@ -78,6 +78,13 @@ export class Consultar implements OnInit {
     }
   }
 
+  modalSucessoAberto = false;
+
+  fecharModalSucesso() {
+    this.modalSucessoAberto = false;
+    this.router.navigate(['/consultas']);
+  }
+
   salvarConsulta() {
     if (!this.agendamento) return;
 
@@ -113,9 +120,7 @@ export class Consultar implements OnInit {
       }
 
       this.agendamentoService.salvarAgendamentos(agendamentos);
-      alert('Consulta salva com sucesso!');
-      // Redireciona para a página de consultas após salvar
-      this.router.navigate(['/consultas']);
+      this.modalSucessoAberto = true;
     }
   }
 }

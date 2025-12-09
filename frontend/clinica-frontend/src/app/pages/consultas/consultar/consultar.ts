@@ -17,7 +17,6 @@ export class Consultar implements OnInit {
   pacienteDetalhes: any = null;
   carregando = true;
 
-  // Dados do formulário
   tipoConsulta = '';
   proximaConsulta = '';
   queixasPrincipais = '';
@@ -47,7 +46,6 @@ export class Consultar implements OnInit {
 
     if (ag) {
       this.agendamento = ag;
-      // Carrega dados salvos anteriormente se existirem
       this.tipoConsulta = ag.tipoConsulta || '';
       this.proximaConsulta = ag.proximaConsulta || '';
       this.queixasPrincipais = ag.queixasPrincipais || '';
@@ -88,7 +86,6 @@ export class Consultar implements OnInit {
   salvarConsulta() {
     if (!this.agendamento) return;
 
-    // Atualizar agendamento atual com dados da consulta
     this.agendamento.tipoConsulta = this.tipoConsulta;
     this.agendamento.proximaConsulta = this.proximaConsulta;
     this.agendamento.queixasPrincipais = this.queixasPrincipais;
@@ -104,7 +101,6 @@ export class Consultar implements OnInit {
     if (index !== -1) {
       agendamentos[index] = this.agendamento;
 
-      // Se houver próxima consulta, criar novo agendamento
       if (this.proximaConsulta && this.proximaConsulta.trim() !== '') {
         const novoAgendamento: Agendamento = {
           id: Date.now(),

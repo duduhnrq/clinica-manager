@@ -11,6 +11,7 @@ interface ItemOperacao {
   data: string;
   horario: string;
   tipo: string;
+  procedimento?: string;
   status: string;
 }
 
@@ -58,6 +59,7 @@ export class Operacoes implements OnInit {
         data: ag.data,
         horario: ag.horario,
         tipo: ag.tipo,
+        procedimento: ag.procedimento || '—',
         status: status,
       });
 

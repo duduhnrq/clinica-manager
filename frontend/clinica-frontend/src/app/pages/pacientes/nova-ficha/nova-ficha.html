@@ -146,7 +146,7 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Rua *</label>
               <input
-                [(ngModel)]="paciente.rua"
+                [(ngModel)]="paciente.endereco.rua"
                 name="rua"
                 required
                 type="text"
@@ -157,7 +157,7 @@
             <div class="flex flex-col w-sm">
               <label class="text-sm font-medium">Número *</label>
               <input
-                [(ngModel)]="paciente.numero"
+                [(ngModel)]="paciente.endereco.numero"
                 name="numero"
                 required
                 type="text"
@@ -168,7 +168,7 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Bairro *</label>
               <input
-                [(ngModel)]="paciente.bairro"
+                [(ngModel)]="paciente.endereco.bairro"
                 name="bairro"
                 required
                 type="text"
@@ -182,7 +182,7 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">CEP *</label>
               <input
-                [(ngModel)]="paciente.cep"
+                [(ngModel)]="paciente.endereco.cep"
                 name="cep"
                 required
                 type="text"
@@ -195,7 +195,7 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Cidade *</label>
               <input
-                [(ngModel)]="paciente.cidade"
+                [(ngModel)]="paciente.endereco.cidade"
                 name="cidade"
                 required
                 type="text"
@@ -206,7 +206,7 @@
             <div class="flex flex-col w-full">
               <label class="text-sm font-medium">Estado *</label>
               <input
-                [(ngModel)]="paciente.estado"
+                [(ngModel)]="paciente.endereco.estado"
                 name="estado"
                 required
                 type="text"
@@ -226,20 +226,6 @@
         (click)="salvarFicha(form)"
         class="bg-blue-500 px-4 h-10 rounded-md font-medium text-sm text-white hover:bg-blue-600 cursor-pointer transition-all duration-300 ease-in-out flex items-center gap-1"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-4"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9 15l2.25 2.25L15 12m4.5-2.625v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625A1.125 1.125 0 0 0 4.5 4.5v15a1.125 1.125 0 0 0 1.125 1.125h12.75A1.125 1.125 0 0 0 19.5 19.5V11.25a9 9 0 0 0-9-9z"
-          />
-        </svg>
         Salvar Ficha
       </button>
     </div>

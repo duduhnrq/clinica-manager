@@ -21,12 +21,14 @@ export class NovaFicha {
     email: '',
     profissao: '',
     telefone: '',
-    rua: '',
-    numero: '',
-    bairro: '',
-    cep: '',
-    cidade: '',
-    estado: '',
+    endereco: {
+        rua: '',
+        numero: '',
+        bairro: '',
+        cep: '',
+        cidade: '',
+        estado: '',
+    },
   };
 
   onCpfInput(event: any) {
@@ -80,7 +82,7 @@ export class NovaFicha {
       event.target.value = value;
     }
 
-    this.paciente.cep = event.target.value;
+    this.paciente.endereco.cep = event.target.value;
   }
 
   modalSucessoAberto = false;

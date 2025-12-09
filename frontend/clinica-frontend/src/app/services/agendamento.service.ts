@@ -10,6 +10,10 @@ export interface Agendamento {
   horario: string;
   status?: 'agendada' | 'consultado' | 'realizada' | 'cancelada';
 
+  // Campos da Operação
+  anotacoesOperacao?: string;
+
+  // Campos da Consulta
   tipoConsulta?: string;
   proximaConsulta?: string;
   queixasPrincipais?: string;
@@ -34,7 +38,23 @@ export class AgendamentoService {
 
   carregarAgendamentos(): Agendamento[] {
     const dados = localStorage.getItem(this.chave);
-    return dados ? JSON.parse(dados) : [];
+    let agendamentos: Agendamento[] = dados ? JSON.parse(dados) : [];
+
+    let dadosAntigosCorrigidos = false;
+
+    agendamentos = agendamentos.map((ag) => {
+      if (ag.anotacoesOperacao === undefined) {
+        ag.anotacoesOperacao = '';
+        dadosAntigosCorrigidos = true;
+      }
+      return ag;
+    });
+
+    if (dadosAntigosCorrigidos) {
+      this.salvarAgendamentos(agendamentos);
+    }
+
+    return agendamentos;
   }
 
   adicionarAgendamento(agendamento: Agendamento): void {
@@ -45,7 +65,7 @@ export class AgendamentoService {
 
   atualizarAgendamento(id: number, agendamentoAtualizado: Agendamento): void {
     const agendamentos = this.carregarAgendamentos();
-    const index = agendamentos.findIndex(ag => ag.id === id);
+    const index = agendamentos.findIndex((ag) => ag.id === id);
     if (index !== -1) {
       agendamentos[index] = agendamentoAtualizado;
       this.salvarAgendamentos(agendamentos);
@@ -54,7 +74,7 @@ export class AgendamentoService {
 
   deletarAgendamento(id: number): void {
     const agendamentos = this.carregarAgendamentos();
-    const filtrados = agendamentos.filter(ag => ag.id !== id);
+    const filtrados = agendamentos.filter((ag) => ag.id !== id);
     this.salvarAgendamentos(filtrados);
   }
 

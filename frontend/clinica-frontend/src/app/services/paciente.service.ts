@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface Endereco {
+  rua: string;
+  numero: string;
+  bairro: string;
+  cep: string;
+  cidade: string;
+  estado: string;
+}
+
 export interface Paciente {
   id?: number;
   nomeCompleto: string;
@@ -13,12 +22,7 @@ export interface Paciente {
   profissao: string;
   telefone: string;
 
-  rua: string;
-  numero: string;
-  bairro: string;
-  cep: string;
-  cidade: string;
-  estado: string;
+  endereco: Endereco;
 
   dataCadastro?: string;
 }

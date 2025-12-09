@@ -37,6 +37,9 @@ export class Agenda implements OnInit {
   modalSucessoAberto = false;
   modalErroAberto = false;
   modalDataAberto = false;
+  modalConfirmacaoAberto = false;
+
+  agendamentoParaDeletarId: number | null = null;
 
   editandoAgendamento: Agendamento | null = null;
   agendamentoIdEdicao: number | null = null;
@@ -109,7 +112,7 @@ export class Agenda implements OnInit {
       if (this.diasComAgendamentos.length > 0) {
         this.selecionarDia(this.diasComAgendamentos[0]);
       }
-    }, 100);
+    }, 300);
 
     this.form.get('tipo')?.valueChanges.subscribe((tipo) => {
       if (tipo === 'operacao') {
@@ -243,9 +246,15 @@ export class Agenda implements OnInit {
   }
 
   selecionarDia(dia: DiasComAgendamentos) {
-    this.dataSelecionada = `${dia.dia}/${dia.mes}/${dia.ano}`;
-    this.dataSelecionadaIso = dia.data;
-    this.agendamentosDataSelecionada = dia.agendamentos;
+    if (dia.data === this.dataSelecionadaIso) {
+      this.dataSelecionadaIso = '';
+      this.dataSelecionada = '';
+      this.agendamentosDataSelecionada = [];
+    } else {
+      this.dataSelecionada = `${dia.dia}/${dia.mes}/${dia.ano}`;
+      this.dataSelecionadaIso = dia.data;
+      this.agendamentosDataSelecionada = dia.agendamentos;
+    }
   }
 
   setupBuscaPaciente() {
@@ -324,6 +333,7 @@ export class Agenda implements OnInit {
     this.form.reset({ tipo: '', pacienteBusca: '' });
     this.modalSucessoAberto = false;
     this.modalErroAberto = false;
+    this.modalConfirmacaoAberto = false;
   }
 
   carregarPacientes() {
@@ -371,7 +381,10 @@ export class Agenda implements OnInit {
             data: this.form.value.data,
             horario: this.form.value.horario,
           };
-          this.agendamentoService.atualizarAgendamento(this.agendamentoIdEdicao, this.agendamentos[index]);
+          this.agendamentoService.atualizarAgendamento(
+            this.agendamentoIdEdicao,
+            this.agendamentos[index]
+          );
         }
       } else {
         const novoAgendamento: Agendamento = {
@@ -406,12 +419,28 @@ export class Agenda implements OnInit {
     }
   }
 
+  abrirModalConfirmacao(id: number) {
+    this.agendamentoParaDeletarId = id;
+    this.modalConfirmacaoAberto = true;
+  }
+
+  // agenda.ts
+confirmarDelecao() {
+    if (this.agendamentoParaDeletarId !== null) {
+        this.deletarAgendamento(this.agendamentoParaDeletarId); 
+    }
+    this.fecharModal();
+    this.agendamentoParaDeletarId = null;
+}
+
   deletarAgendamento(id: number) {
     this.agendamentos = this.agendamentos.filter((ag) => ag.id !== id);
     this.agendamentoService.deletarAgendamento(id);
     this.carregarAgendamentosDoMes();
     if (this.dataSelecionada) {
-      this.agendamentosDataSelecionada = this.agendamentosDataSelecionada.filter((ag) => ag.id !== id);
+      this.agendamentosDataSelecionada = this.agendamentosDataSelecionada.filter(
+        (ag) => ag.id !== id
+      );
     }
   }
 

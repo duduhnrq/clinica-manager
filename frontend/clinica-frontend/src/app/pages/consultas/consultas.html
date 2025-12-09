@@ -20,19 +20,19 @@
   <div class="flex justify-between gap-4">
     <div class="flex items-center gap-4 bg-white border border-gray-200 rounded-lg p-6 w-full">
       <svg
-            class="w-6 h-6 text-blue-500"
-            viewBox="0 0 27 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M23.7565 3.13046C23.1606 2.5343 22.4531 2.06138 21.6744 1.73873C20.8957 1.41607 20.0611 1.25 19.2182 1.25C18.3753 1.25 17.5406 1.41607 16.7619 1.73873C15.9832 2.06138 15.2757 2.5343 14.6798 3.13046L13.4432 4.36713L12.2065 3.13046C11.0029 1.92682 9.37038 1.25062 7.66817 1.25062C5.96597 1.25062 4.33348 1.92682 3.12984 3.13046C1.9262 4.3341 1.25 5.96659 1.25 7.6688C1.25 9.371 1.9262 11.0035 3.12984 12.2071L13.4432 22.5205L23.7565 12.2071C24.3527 11.6112 24.8256 10.9037 25.1482 10.125C25.4709 9.34634 25.637 8.5117 25.637 7.6688C25.637 6.82589 25.4709 5.99125 25.1482 5.21255C24.8256 4.43385 24.3527 3.72635 23.7565 3.13046Z"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+        class="w-6 h-6 text-blue-500"
+        viewBox="0 0 27 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M23.7565 3.13046C23.1606 2.5343 22.4531 2.06138 21.6744 1.73873C20.8957 1.41607 20.0611 1.25 19.2182 1.25C18.3753 1.25 17.5406 1.41607 16.7619 1.73873C15.9832 2.06138 15.2757 2.5343 14.6798 3.13046L13.4432 4.36713L12.2065 3.13046C11.0029 1.92682 9.37038 1.25062 7.66817 1.25062C5.96597 1.25062 4.33348 1.92682 3.12984 3.13046C1.9262 4.3341 1.25 5.96659 1.25 7.6688C1.25 9.371 1.9262 11.0035 3.12984 12.2071L13.4432 22.5205L23.7565 12.2071C24.3527 11.6112 24.8256 10.9037 25.1482 10.125C25.4709 9.34634 25.637 8.5117 25.637 7.6688C25.637 6.82589 25.4709 5.99125 25.1482 5.21255C24.8256 4.43385 24.3527 3.72635 23.7565 3.13046Z"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
 
       <div class="flex flex-col items-start gap-1">
         <p class="text-xs font-medium text-gray-500">Total de Consultas</p>
@@ -94,7 +94,7 @@
 
     <div *ngIf="carregando" class="py-8 text-center text-gray-500">Carregando...</div>
     <div *ngIf="!carregando && nenhumRegistro" class="py-8 text-center text-gray-500">
-      Nenhuma consulta registrada nos últimos 2 meses.
+      Nenhuma consulta registrada.
     </div>
 
     <div *ngIf="!carregando && !nenhumRegistro" class="flex flex-col gap-4">
@@ -108,9 +108,25 @@
           >
             {{ (p.pacienteNome || '—').charAt(0).toUpperCase() }}
           </div>
-          <div class="flex flex-col text-left">
+          <div class="flex flex-col text-left gap-1">
             <div class="text-md font-medium">{{ p.pacienteNome }}</div>
-            <div class="text-sm text-gray-500">Consulta: {{ p.data }}</div>
+            <div class="text-sm text-gray-500 flex items-center gap-1">
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 40 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M28 2V10M12 2V10M2 18H38M6 6H34C36.2091 6 38 7.79086 38 10V38C38 40.2091 36.2091 42 34 42H6C3.79086 42 2 40.2091 2 38V10C2 7.79086 3.79086 6 6 6Z"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{{ p.data }} às {{ p.horario }}</span>
+            </div>
           </div>
         </div>
 

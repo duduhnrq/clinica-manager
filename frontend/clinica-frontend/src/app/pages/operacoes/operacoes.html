@@ -92,6 +92,10 @@
       <span class="text-sm font-medium">Total de Operações ({{ operacoesAgendadas.length }}) </span>
     </div>
 
+    <div *ngIf="nenhumRegistro" class="py-8 text-center text-gray-500">
+      Nenhuma operação registrada.
+    </div>
+
     <div class="flex flex-col gap-4">
       <div
         *ngFor="let op of operacoesAgendadas"
@@ -103,13 +107,35 @@
           >
             {{ op.pacienteNome ? op.pacienteNome.charAt(0) : '?' }}
           </div>
-          <div class="flex flex-col text-left">
-            <div class="text-md font-medium">{{ op.pacienteNome }}</div>
-            <div class="text-sm text-gray-500">Operação: {{ op.data }}</div>
+          <div class="flex flex-col text-left gap-3">
+            <div class="flex flex-col">
+              <p class="text-md font-medium">
+                {{ op.pacienteNome }}
+              </p>
+              <span class="text-gray-500 text-sm">{{ op.procedimento }}</span>
+            </div>
+
+            <div class="text-sm text-gray-500 flex items-center gap-1">
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 40 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M28 2V10M12 2V10M2 18H38M6 6H34C36.2091 6 38 7.79086 38 10V38C38 40.2091 36.2091 42 34 42H6C3.79086 42 2 40.2091 2 38V10C2 7.79086 3.79086 6 6 6Z"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{{ op.data }} às {{ op.horario }}</span>
+            </div>
           </div>
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex flex-col items-end gap-4">
           <span
             class="text-xs font-medium rounded-xl px-2 py-0.5"
             [ngClass]="
@@ -118,11 +144,12 @@
                 : 'bg-blue-50 border border-blue-500 text-blue-500'
             "
           >
-            {{ op.status === 'realizada' ? 'Realizada' : 'Agendada' }}
+            {{ op.status === 'realizada' ? 'Realizada' : 'Aguardando' }}
           </span>
 
           <button
             class="flex items-center gap-3 text-black bg-gray-100 border border-gray-200 rounded-md py-2 px-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 ease-in-out cursor-pointer"
+            [routerLink]="'/operacoes/anotacoes/' + op.id"
           >
             {{ op.status === 'realizada' ? 'Ver Detalhes' : 'Adicionar Anotações' }}
           </button>

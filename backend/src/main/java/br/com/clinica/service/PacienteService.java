@@ -28,52 +28,55 @@ public class PacienteService {
 
     // @Transactional garante que esta operação inteira (salvar)
     // ou funciona por completo, ou falha por completo (nunca pela metade).
+    // PacienteService.java
+
     @Transactional
     public Paciente salvar(PacienteRequestDTO dto) {
-        
+
+        System.out.println("Valor do CPF recebido no DTO (Backend): " + dto.getCpf());
+
         // --- REGRA DE NEGÓCIO 1: Validar duplicados ---
-        // Usamos os métodos que criamos no Repository
-        if (pacienteRepository.findByCpf(dto.cpf()).isPresent()) {
-            throw new RegraDeNegocioException("CPF já cadastrado no sistema."); // MUDOU
+        if (pacienteRepository.findByCpf(dto.getCpf()).isPresent()) {
+            throw new RegraDeNegocioException("CPF já cadastrado no sistema.");
         }
-        
-        if (pacienteRepository.findByEmail(dto.email()).isPresent()) {
-            throw new RegraDeNegocioException("Email já cadastrado no sistema."); // MUDOU
+
+        if (pacienteRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new RegraDeNegocioException("Email já cadastrado no sistema.");
         }
 
         // --- LÓGICA DE MAPEAMENTO: Converter DTO para Entidade ---
-        
-        // 1. Criar e preencher o Endereco embutido
+
+        // 1. Criar e preencher o Endereco embutido (Deixando como estava no seu código)
         Endereco endereco = new Endereco();
-        endereco.setRua(dto.rua());
-        endereco.setNumero(dto.numero());
-        endereco.setBairro(dto.bairro());
-        endereco.setCep(dto.cep());
-        endereco.setCidade(dto.cidade());
-        endereco.setEstado(dto.estado());
+        endereco.setRua(dto.getEndereco().rua());
+        endereco.setNumero(dto.getEndereco().numero());
+        endereco.setBairro(dto.getEndereco().bairro());
+        endereco.setCep(dto.getEndereco().cep());
+        endereco.setCidade(dto.getEndereco().cidade());
+        endereco.setEstado(dto.getEndereco().estado());
 
         // 2. Criar e preencher o Paciente
         Paciente paciente = new Paciente();
-        paciente.setNomeCompleto(dto.nomeCompleto());
-        paciente.setDataNascimento(dto.dataNascimento());
-        paciente.setNaturalidade(dto.naturalidade());
-        paciente.setCpf(dto.cpf());
-        paciente.setEstadoCivil(dto.estadoCivil());
-        paciente.setEmail(dto.email());
-        paciente.setTelefone(dto.telefone());
-        paciente.setProfissao(dto.profissao());
-        
+
+        paciente.setNomeCompleto(dto.getNomeCompleto());
+        paciente.setDataNascimento(dto.getDataNascimento());
+        paciente.setNaturalidade(dto.getNaturalidade());
+        paciente.setCpf(dto.getCpf()); // <--- O CAMPO QUE ESTAVA FALTANDO!
+        paciente.setEstadoCivil(dto.getEstadoCivil());
+        paciente.setEmail(dto.getEmail());
+        paciente.setTelefone(dto.getTelefone());
+        paciente.setProfissao(dto.getProfissao());
+
         // 3. Atribuir o objeto Endereco ao Paciente
         paciente.setEndereco(endereco);
 
-        // 4. Chamar o Repository (o "Assistente") para salvar no banco
+        // 4. Salvar
         return pacienteRepository.save(paciente);
     }
-    
 
-    
     /**
      * Lista todos os pacientes do banco.
+     * 
      * @Transactional(readOnly = true) é uma otimização para consultas.
      */
     @Transactional(readOnly = true)
@@ -96,13 +99,16 @@ public class PacienteService {
      */
     @Transactional(readOnly = true)
     public List<Paciente> pesquisar(String termo) {
-        return pacienteRepository.findByNomeCompletoContainingIgnoreCaseOrEmailContainingIgnoreCaseOrTelefoneContainingIgnoreCase(
-                termo, termo, termo);
+        return pacienteRepository
+                .findByNomeCompletoContainingIgnoreCaseOrEmailContainingIgnoreCaseOrTelefoneContainingIgnoreCase(
+                        termo, termo, termo);
     }
+
     /**
      * Atualiza um paciente existente.
      * Se o paciente não for encontrado, lança RuntimeException.
-     * Se houver conflito de CPF ou Email (pertencentes a outro paciente), lança RegraDeNegocioException.
+     * Se houver conflito de CPF ou Email (pertencentes a outro paciente), lança
+     * RegraDeNegocioException.
      */
     @Transactional
     public Paciente atualizar(Long id, PacienteRequestDTO dto) {
@@ -111,38 +117,38 @@ public class PacienteService {
                 .orElseThrow(() -> new RuntimeException("Paciente não encontrado para atualização."));
 
         // --- Regras de negócio: Evitar duplicidade em CPF e Email ---
-        pacienteRepository.findByCpf(dto.cpf())
+        pacienteRepository.findByCpf(dto.getCpf())
                 .filter(p -> !p.getId().equals(id))
                 .ifPresent(p -> {
                     throw new RegraDeNegocioException("CPF já está cadastrado em outro paciente.");
                 });
 
-        pacienteRepository.findByEmail(dto.email())
+        pacienteRepository.findByEmail(dto.getEmail())
                 .filter(p -> !p.getId().equals(id))
                 .ifPresent(p -> {
                     throw new RegraDeNegocioException("Email já está cadastrado em outro paciente.");
                 });
 
         // --- Atualiza os campos básicos ---
-        pacienteExistente.setNomeCompleto(dto.nomeCompleto());
-        pacienteExistente.setDataNascimento(dto.dataNascimento());
-        pacienteExistente.setNaturalidade(dto.naturalidade());
-        pacienteExistente.setCpf(dto.cpf());
-        pacienteExistente.setEstadoCivil(dto.estadoCivil());
-        pacienteExistente.setEmail(dto.email());
-        pacienteExistente.setTelefone(dto.telefone());
-        pacienteExistente.setProfissao(dto.profissao());
+        pacienteExistente.setNomeCompleto(dto.getNomeCompleto());
+        pacienteExistente.setDataNascimento(dto.getDataNascimento());
+        pacienteExistente.setNaturalidade(dto.getNaturalidade());
+        pacienteExistente.setCpf(dto.getCpf());
+        pacienteExistente.setEstadoCivil(dto.getEstadoCivil());
+        pacienteExistente.setEmail(dto.getEmail());
+        pacienteExistente.setTelefone(dto.getTelefone());
+        pacienteExistente.setProfissao(dto.getProfissao());
 
         // --- Atualiza endereço (mantendo o objeto embutido) ---
         if (pacienteExistente.getEndereco() == null) {
             pacienteExistente.setEndereco(new Endereco());
         }
-        pacienteExistente.getEndereco().setRua(dto.rua());
-        pacienteExistente.getEndereco().setNumero(dto.numero());
-        pacienteExistente.getEndereco().setBairro(dto.bairro());
-        pacienteExistente.getEndereco().setCep(dto.cep());
-        pacienteExistente.getEndereco().setCidade(dto.cidade());
-        pacienteExistente.getEndereco().setEstado(dto.estado());
+        pacienteExistente.getEndereco().setRua(dto.getEndereco().rua());
+        pacienteExistente.getEndereco().setNumero(dto.getEndereco().numero());
+        pacienteExistente.getEndereco().setBairro(dto.getEndereco().bairro());
+        pacienteExistente.getEndereco().setCep(dto.getEndereco().cep());
+        pacienteExistente.getEndereco().setCidade(dto.getEndereco().cidade());
+        pacienteExistente.getEndereco().setEstado(dto.getEndereco().estado());
 
         // --- Salva novamente no banco ---
         return pacienteRepository.save(pacienteExistente);
@@ -160,4 +166,3 @@ public class PacienteService {
         pacienteRepository.deleteById(id);
     }
 }
-

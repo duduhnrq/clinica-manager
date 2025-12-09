@@ -1,57 +1,88 @@
 package br.com.clinica.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import java.time.LocalDate;
 
-// Este 'record' é o nosso "Menu" ou "Contrato".
-// É exatamente o que esperamos que o Angular nos envie.
-// As anotações (@NotBlank, @Email) são para validação automática.
-public record PacienteRequestDTO(
-    
-    @NotBlank // Não pode ser nulo nem vazio
-    String nomeCompleto,
-    
-    @NotNull // Não pode ser nulo
-    @Past     // A data deve ser no passado
-    LocalDate dataNascimento,
-    
-    @NotBlank
-    String naturalidade,
-    
-    @NotBlank
-    String cpf,
-    
-    @NotBlank
-    String estadoCivil,
-    
-    @NotBlank
-    @Email    // Deve ter formato de email válido
-    String email,
-    
-    @NotBlank
-    String telefone,
-    
-    String profissao, // Opcional, sem @NotBlank
+// Agora é uma classe normal
+public class PacienteRequestDTO {
 
-    // Campos do Endereço (vêm "achatados" do formulário)
-    @NotBlank
-    String rua,
-
-    @NotBlank
-    String numero,
-
-    @NotBlank
-    String bairro,
+    // --- CAMPOS PESSOAIS ---
     
     @NotBlank
-    String cep,
+    private String nomeCompleto;
+    
+    @NotNull
+    @Past
+    private LocalDate dataNascimento;
     
     @NotBlank
-    String cidade,
-
+    private String naturalidade;
+    
     @NotBlank
-    String estado
-) {}
+    private String cpf; 
+    
+    @NotBlank
+    private String estadoCivil;
+    
+    @NotBlank
+    @Email
+    private String email;
+    
+    @NotBlank
+    private String telefone;
+    
+    private String profissao;
+
+    // --- ENDEREÇO ANINHADO ---
+    @NotNull 
+    @Valid
+    private EnderecoRequestDTO endereco;
+    
+    // Construtor vazio (necessário para a desserialização do Jackson)
+    public PacienteRequestDTO() {} 
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+    
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+    
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public String getTelefone() {
+        return telefone;
+    }
+    
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public EnderecoRequestDTO getEndereco() {
+        return endereco;
+    }
+    
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+}

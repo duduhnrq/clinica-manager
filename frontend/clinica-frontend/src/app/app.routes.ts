@@ -8,6 +8,7 @@ import { Agenda } from './pages/agenda/agenda';
 import { Consultas } from './pages/consultas/consultas'
 import { Consultar } from './pages/consultas/consultar/consultar';
 import { Operacoes } from './pages/operacoes/operacoes';
+import { Anotacoes } from './pages/operacoes/anotacoes/anotacoes';
 
 export const routes: Routes = [
   { path: '', component: MenuPrincipal },
@@ -19,4 +20,5 @@ export const routes: Routes = [
   { path: 'consultas', component: Consultas },
   { path: 'consultas/consultar/:id', component: Consultar },
   { path: 'operacoes', component: Operacoes },
+  { path: 'operacoes/anotacoes/:id', component: Anotacoes },
 ];

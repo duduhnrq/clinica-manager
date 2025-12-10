@@ -31,7 +31,7 @@ Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público 
 
 ### Backlog de Produto
 
-<img width="1709" height="727" alt="image" src="https://github.com/user-attachments/assets/d1aff1da-95f0-4042-ba29-743fe7a95b49" />
+<img width="1707" height="779" alt="image" src="https://github.com/user-attachments/assets/d956b0bd-103e-4af0-ae6e-16758a89f3e5" />
 
 ### Protótipo Navegável
 

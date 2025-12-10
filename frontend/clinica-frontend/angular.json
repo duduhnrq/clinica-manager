@@ -13,8 +13,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "index": "src/index.html",
-            "outputPath": "dist/clinica-frontend",
+            "index": {
+              "input": "src/index.html",
+              "output": "index.html"
+            },
+            "outputPath": "dist/clinica-frontend", 
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

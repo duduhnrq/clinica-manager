@@ -22,7 +22,7 @@ services:
     plan: free
     autoDeploy: true
     buildCommand: npm install && npm run build -- --configuration=production
-    publishPath: dist/clinica-frontend/browser/
+    publishPath: dist/clinica-frontend/
     
     routes:
       - type: rewrite

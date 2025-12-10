@@ -7,6 +7,10 @@ Este projeto tem como objetivo desenvolver um sistema de gestão para clínicas,
 
 O sistema será desenvolvido em **Java (Spring Boot)** no back-end e **Angular** no front-end, utilizando um **banco de dados relacional** (PostgreSQL).  
 
+## 💻 Deploy
+
+[Clínica - Dr. Francisco Milfont](https://clinica-frontend-919f.onrender.com)
+
 ## 🚀 Funcionalidades  
 - **Cadastro de pacientes (CRUD):** criar, editar, excluir e visualizar informações de pacientes.  
 - **Agenda:** marcação e gerenciamento de consultas e cirurgias.  
@@ -40,3 +44,7 @@ Nosso desenvolvimento é guiado por princípios ágeis, com um backlog público 
 ### Diagrama de Atividades
 
 [🔗Clique aqui para acessar o Figma](https://www.figma.com/board/cYlT4kZKIgR7OWQys0CaP6/Diagrama-de-Atividades---Cl%C3%ADnica?t=a1H3VszDg3qL8OBI-1)
+
+### Screencast
+
+[🔗Clique aqui para acessar o Screencast](https://www.youtube.com/watch?v=OQAzRrs9KmY)

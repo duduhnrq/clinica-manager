@@ -17,12 +17,12 @@ services:
 
   # 2. SERVIÇO FRONTEND (ANGULAR - STATIC SITE)
   - type: static
-    name: clinica-manager
+    name: clinica-frontend
     rootDir: frontend/clinica-frontend
     plan: free
     autoDeploy: true
     buildCommand: npm install && npm run build -- --configuration=production
-    publishPath: dist/clinica-frontend/
+    publishPath: dist/clinica-frontend/browser/
     
     routes:
       - type: rewrite

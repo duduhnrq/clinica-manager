@@ -1,7 +1,30 @@
 services:
+  # 1. SERVIÇO BACKEND (SPRING BOOT - WEB SERVICE)
   - type: web
     name: clinica-backend
-    runtime: docker
+    env: java 
     rootDir: backend
     plan: free
     autoDeploy: true
+    buildCommand: bash render-build.sh
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: DATABASE_URL
+      - key: DB_USER
+      - key: DB_PASSWORD
+      - key: SERVER_PORT
+        value: "10000"
+
+  # 2. SERVIÇO FRONTEND (ANGULAR - STATIC SITE)
+  - type: static
+    name: clinica-manager
+    rootDir: frontend/clinica-frontend
+    plan: free
+    autoDeploy: true
+    buildCommand: npm install && npm run build -- --configuration=production
+    publishPath: dist/clinica-frontend/
+    
+    routes:
+      - type: rewrite
+        source: /.*
+        destination: /index.html

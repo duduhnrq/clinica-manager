@@ -13,9 +13,12 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**") // Libera apenas os endpoints /api/
-                        .allowedOrigins("http://localhost:4200") // Permite requisições do Angular
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); // Libera os métodos
+                registry.addMapping("/api/**") 
+                    .allowedOrigins(
+                        "http://localhost:4200",
+                        "https://clinica-frontend-919f.onrender.com" 
+                    ) 
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); 
             }
         };
     }
